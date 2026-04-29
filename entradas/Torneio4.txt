@@ -1,0 +1,177 @@
+dict_type: name, path_chart
+add_type: Grass, inputs/typeChart.csv
+add_type: Fire, inputs/typeChart.csv
+add_type: Water, inputs/typeChart.csv
+add_type: Normal, inputs/typeChart.csv
+add_type: Steel, inputs/typeChart.csv
+add_type: Ghost, inputs/typeChart.csv
+add_type: Electric, inputs/typeChart.csv
+add_type: Poison, inputs/typeChart.csv
+add_type: Rock, inputs/typeChart.csv
+add_type: Ice, inputs/typeChart.csv
+add_type: Dragon, inputs/typeChart.csv
+add_type: Psychic, inputs/typeChart.csv
+add_type: Normal, inputs/typeChart.csv
+add_type: Ghost, inputs/typeChart.csv
+add_type: Fairy, inputs/typeChart.csv
+add_type: Fighting, inputs/typeChart.csv
+add_type: Flying, inputs/typeChart.csv
+add_type: Dark, inputs/typeChart.csv
+add_type: Ground, inputs/typeChart.csv
+add_type: Rock, inputs/typeChart.csv
+add_type: Bug, inputs/typeChart.csv
+
+dict_tmove: name, type, power, accuracy, effect, effect_chance
+add_move: Leafage, Grass, 40, 1
+add_move: ShadowSneak, Ghost, 40, 10
+add_move: BraveBird, Flying, 120, 1
+add_move: SuckerPunch, Dark, 70, 1
+add_move: Ember, Fire, 40, 1, Burn, 0.3
+add_move: Bite, Dark, 60, 1
+add_move: DoubleKick, Fighting, 30, 1
+add_move: Thrash, Normal, 120, 1
+add_move: WaterGun, Water, 40, 1
+add_move: MoonBlast, Fairy, 95, 1
+add_move: HyperVoice, Normal, 90, 1
+add_move: IcyWind, Ice, 55, 0.95
+add_move: SunsteelStrike, Steel, 100, 1
+add_move: ZenHeadbutt, Psychic, 80, 0.9 
+add_move: Crunch, Dark, 100, 10
+add_move: IcyWind, Fire, 120, 1
+add_move: Psychic, Psychic, 90, 1
+add_move: MoongeistBeam, Ghost, 100, 1
+add_move: AirSlash, Flying, 75, 0.95
+add_move: NightDaze, Dark, 85, 0.95
+add_move: PrismaticLaser, Psychic, 160, 1
+add_move: PowerGem, Rock, 80, 1.75
+add_move: NightSlash, Dark, 70, 1
+add_move: MetalClaw, Steel, 50, 0.95
+add_move: Confusion, Psychic, 50, 1
+add_move: VineWhip, Grass, 45, 1
+add_move: RazorLeaf, Grass, 55, 0.95
+add_move: SolarBeam, Grass, 120, 1
+add_move: TakeDown, Normal, 90, 0.85
+add_move: PowerWhip, Grass, 120, 1
+add_move: Flamethrower, Fire, 90, 1, Burn, 0.2
+add_move: Inferno, Fire, 100, 0.5, Burn, 1
+add_move: DragonBreath, Dragon, 60, 1
+add_move: HydroPump, Water, 110, 0.80
+add_move: Bite, Dark, 60, 1
+add_move: Spark, Electric, 65, 1
+add_move: ThunderFang, Electric, 65, 0.95
+add_move: Crunch, Dark, 100, 1
+add_move: Thunder, Electric, 110, 0.7
+add_move: FireFang, Fire, 65, 0.95, Burn, 0.2
+add_move: SacredFire, Fire, 100, 0.95, Burn, 0.5
+add_move: FireBlast, Fire, 110, 0.85, Burn, 0.3
+add_move: WaterPulse, Water, 60, 2
+add_move: HydroPump, Water, 110, 0.80
+add_move: Surf, Water, 90, 1
+add_move: WoodHammer, Grass, 55, 0.95
+add_move: DrumBeating, Grass, 80, 1
+add_move: ParalizeRay, Electric, 90, 1, Paralize, 0.5
+add_move: KnockOff, Dark, 65, 1
+add_move: BoomBurst, Normal, 140, 1
+add_move: FlameCharge, Fire, 50, 1
+add_move: SureHit, Poison, 150, 2
+add_move: Flamethrower, Fire, 90, 1, Burn, 0.2
+add_move: PyroBall, Fire, 120, 0.9, Burn, 0.1
+add_move: Problematic, Electric, 260, 2, Paralize, 2
+add_move: Headbutt, Normal, 70, 1.5
+add_move: ElectroDrift, Electric, 100, 1
+add_move: SnipeShot, Water, 80, 1
+add_move: Acrobatics, Flying, 55, 1
+add_move: SacredSword, Fighting, 90, 1
+add_move: CloseCombat, Fighting, 120, 1
+add_move: KillingMove, Poison, 260, 1
+add_move: GigaImpact, Normal, 150, 0.9
+add_move: PoisonTail, Poison, 50, 2, Poison, 0.1
+add_move: DragonTail, Dragon, 60, 0.9
+add_move: HyperBeam, Normal, 150, 0.9
+add_move: PoisonJab, Poison, 80, 1, Poison, 0.3
+add_move: TripleArrow, Fighting, 90, 1.2
+add_move: InfernalParade, Ghost, 65, 2, Burn, 0.3
+add_move: DoubleEdge, Normal, 120, 1
+add_move: CeaselessEdge, Dark, 65, 0.9
+add_move: HydroPump, Water, 110, 0.80
+add_move: Megahorn, Bug, 120, 0.85
+add_move: PlayRough, Fairy, 90, 0.9
+add_move: Slash, Normal, 70, 1
+add_move: FlowerTrick, Grass, 70, 1
+add_move: SuperDuperKillingMove, Poison, 90, 1
+add_move: TorchSong, Fire, 80, 1
+add_move: Lick, Ghost, 30, 1, Paralysis, 0.3
+add_move: ShadowClaw, Ghost, 70, 1
+add_move: AquaTail, Water, 90, 0.9
+add_move: DoubleHit, Normal, 35, 0.9
+add_move: AquaStep, Water, 80, 1
+add_move: ThunderShock, Electric, 40, 1
+add_move: ZapCannon, Electric, 120, 0.5
+add_move: RoarOfTime, Dragon, 150, 0.9
+add_move: SpacialRend, Dragon, 100, 0.95
+add_move: ShadowForce, Ghost, 120, 1
+add_move: Outrage, Dragon, 120, 1
+add_move: Thunder, Electric, 110, 0.7
+add_move: CollisionCourse, Fighting, 100, 2
+add_move: BreakingSwipe, Dragon, 60, 1
+add_move: ElectroDrift, Electric, 100, 1
+add_move: ParabolicCharge, Electric, 65, 1.25
+add_move: Overheat, Fire, 130, 0.9
+add_move: Blizzard, Ice, 110, 0.7
+add_move: IceBeam, Ice, 90, 1
+add_move: FlashCannon, Steel, 80, 1
+add_move: DragonClaw, Dragon, 80, 1
+add_move: FlareBlitz, Fire, 120, 2, Burn, 0.1
+
+dict_pokemon: name, type, hp, attack, defense, speed, [moves; ...]
+add_pokemon: Decidueye, Grass, 78, 107, 75, 70, [Leafage; ShadowSneak; BraveBird; SuckerPunch; Tackle]
+add_pokemon: Incineroar, Fire, 95, 115, 90, 60, [Ember; Bite; DoubleKick; Thrash]
+add_pokemon: Primarina, Water, 80, 74, 74, 60, [WaterGun; MoonBlast; HyperVoice; IcyWind]
+add_pokemon: Solgaleo, Steel, 137, 137, 107, 97, [SunsteelStrike; ZenHeadbutt; Crunch; FlareBlitz]
+add_pokemon: Lunala, Ghost, 137, 113, 89, 97, [MoongeistBeam; AirSlash; Psychic; NightDaze]
+add_pokemon: Necrozma, Psychic, 97, 107, 101, 79, [PrismaticLaser; PowerGem; NightSlash; MetalClaw; Confusion]
+add_pokemon: Venusaur, Grass, 80, 82, 83, 80, [VineWhip; RazorLeaf; SolarBeam; TakeDown; PowerWhip]
+add_pokemon: Charizard, Fire, 78, 84, 78, 100, [Ember; AirSlash; Flamethrower; Inferno; DragonBreath; Tackle]
+add_pokemon: Blastoise, Water, 79, 83, 100, 78, [WaterGun; Bite; FlashCannon; HydroPump]
+add_pokemon: Articuno, Ice, 90, 85, 100, 85, [IceBeam; Blizzard]
+add_pokemon: Zapdos, Electric, 90, 90, 85, 100, [ThunderShock; ZapCannon]
+add_pokemon: Moltres, Fire, 90, 100, 90, 90, [Ember; Flamethrower]
+add_pokemon: Raikou, Electric, 90, 85, 75, 115, [Spark; ThunderFang; Thunder; Crunch]
+add_pokemon: Entei, Fire, 115, 115, 85, 100, [SacredFire; FireFang; FireBlast; Crunch]
+add_pokemon: Suicune, Water, 100, 75, 115, 85, [WaterPulse; Surf; HydroPump; Crunch]
+add_pokemon: Rillaboom, Grass, 100, 125, 90, 85, [WoodHammer; RazorLeaf; DrumBeating; KnockOff; BoomBurst]
+add_pokemon: Cinderace, Fire, 80, 116, 75, 119, [Ember; PyroBall; FlameCharge; Headbutt]
+add_pokemon: Inteleon, Water, 70, 85, 65, 120, [Acrobatics; SnipeShot; WaterPulse; SuckerPunch]
+add_pokemon: SwordZacian, Fairy, 92 , 150, 115, 148, [SacredSword; MetalClaw; Bite; MoonBlast]
+add_pokemon: ShieldZamazenta, Fighting, 92, 120, 140, 128, [MetalClaw; Bite; CloseCombat; GigaImpact]
+add_pokemon: Eternatus, Poison, 140, 85, 95, 130, [PoisonTail; DragonTail; Flamethrower; HyperBeam; PoisonJab]
+add_pokemon: HisuiannDecidueye, Fighting, 88, 112, 80, 60, [Leafage; TripleArrow; RazorLeaf; BraveBird]
+add_pokemon: HisuianTyphlosion, Ghost, 73, 84, 78, 95, [InfernalParade; Flamethrower; Inferno; DoubleEdge]
+add_pokemon: HisuianSamurott, Dark, 90, 108, 80, 85, [SuckerPunch; CeaselessEdge; HydroPump; Megahorn]
+add_pokemon: OriginDialga, Steel, 100, 100, 120, 90, [MetalClaw; DragonBreath; DragonClaw; RoarOfTime]
+add_pokemon: OriginPalkia, Water, 90, 100, 100, 120, [WaterPulse; DragonBreath; AquaTail; SpacialRend]
+add_pokemon: OriginGiratina, Ghost, 150, 120, 100, 90, [ShadowClaw; DragonBreath; DragonClaw; ShadowForce]
+add_pokemon: Meowscarada, Grass, 76, 110, 70, 123, [FlowerTrick; Leafage; Bite; PlayRough; Slash]
+add_pokemon: Skeledirge, Fire, 104, 75, 100, 66, [TorchSong; Lick; HyperVoice; Bite]
+add_pokemon: Quaquaval, Water, 85, 120, 80, 85, [DoubleHit; WaterPulse; AquaStep; CloseCombat]
+add_pokemon: Koraidon, Fighting, 100, 135, 115, 135, [CollisionCourse; BreakingSwipe; Flamethrower; GigaImpact; DragonClaw]
+add_pokemon: Miraidon, Electric, 100, 85, 100, 135, [ElectroDrift; Outrage; ParabolicCharge; Overheat; Thunder]
+
+dict_trainer: name, [pokemons; ...], [(item: qtde); ...]
+add_trainer: Elio, [Decidueye; Entei; Koraidon], [(Potion: 10); (SuperPotion: 5); (FullRestore: 5);  (Antidote: 5); (BurnHeal: 5); (FullHeal: 5)]
+add_trainer: Selene, [Venusaur; Suicune; OriginDialga], [(Potion: 10); (SuperPotion: 5); (FullRestore: 5); (ParalyzeHeal: 5); (Antidote: 5); (BurnHeal: 5); (FullHeal: 5)]
+add_trainer: Chase, [Solgaleo; HisuianTyphlosion ], [(Potion: 10); (SuperPotion: 5); (Antidote: 5); (BurnHeal: 5); (FullHeal: 5)]
+add_trainer: Elaine, [Moltres; Rillaboom; OriginPalkia], [(Potion: 10); (SuperPotion: 5); (Antidote: 5); (HyperPotion: 10); (BurnHeal: 5); (FullHeal: 5)]
+add_trainer: Victor, [Incineroar; Eternatus; Meowscarada], [(Potion: 10); (SuperPotion: 5); (ParalyzeHeal: 5); (FullRestore: 5); (Antidote: 5); (BurnHeal: 5); (FullHeal: 5)]
+add_trainer: Gloria, [Necrozma; HisuiannDecidueye ], [(Potion: 10); (HyperPotion: 10); (SuperPotion: 5); (Antidote: 5); (BurnHeal: 5); (FullHeal: 5)]
+add_trainer: Rei, [Charizard; ShieldZamazenta ], [(Potion: 10); (SuperPotion: 5); (Antidote: 5); (HyperPotion: 10); (BurnHeal: 5); (FullHeal: 5)]
+add_trainer: Akari, [Lunala; Raikou; OriginGiratina], [(Potion: 10); (SuperPotion: 5); (Antidote: 5); (ParalyzeHeal: 5); (BurnHeal: 5); (FullHeal: 5)]
+add_trainer: Florian, [Articuno; HisuianSamurott; Quaquaval], [(Potion: 10); (FullRestore: 5); (SuperPotion: 5); (Antidote: 5); (BurnHeal: 5); (FullHeal: 5)]
+add_trainer: Juliana, [Blastoise; SwordZacian; Miraidon], [(Potion: 10); (SuperPotion: 5); (HyperPotion: 10); (Antidote: 5); (BurnHeal: 5); (FullHeal: 5)]
+add_trainer: Paxton, [Primarina; Cinderace ], [(Potion: 10); (SuperPotion: 5); (Antidote: 5); (BurnHeal: 5); (ParalyzeHeal: 5); (FullHeal: 5)]
+add_trainer: Harmony, [Zapdos; Inteleon; Skeledirge], [(Potion: 10); (FullRestore: 5); (SuperPotion: 5); (Antidote: 5); (BurnHeal: 5); (HyperPotion: 10); (FullHeal: 5)]
+
+dict_tournament: [trainers; ...]
+add_tournament: [Akari; Juliana; N; Florian; Harmony; Paxton; Akari; Rei; Chase; Elio; Selene; Gloria; Victor; Elaine]
+
+run_tournament()

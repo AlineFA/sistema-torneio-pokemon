@@ -1,0 +1,47 @@
+dict_type: name, path_chart
+add_type: Fire, inputs/typeChart.csv
+add_type: Water, inputs/typeChart.csv
+add_type: Grass, inputs/typeChart.csv
+add_type: Electric, inputs/typeChart.csv
+add_type: Ice, inputs/typeChart.csv
+add_type: Poison, inputs/typeChart.csv
+add_type: Normal, inputs/typeChart.csv
+
+dict_tmove: name, type, power, accuracy, effect, effect_chance
+add_move: Tackle, Normal, 40, 1
+add_move: Ember, Fire, 40, 1, Burn, 0.3
+add_move: WaterGun, Water, 40, 1
+add_move: VineWhip, Grass, 45, 1
+add_move: ThunderShock, Electric, 40, 1
+add_move: ZapCannon, Electric, 120, 0.5
+add_move: IceBeam, Ice, 90, 1
+add_move: Blizzard, Ice, 110, 0.7
+add_move: Flamethrower, Fire, 90, 1, Burn, 0.1
+add_move: PoisonSting, Poison, 80, 1, Poison, 0.5
+add_move: SludgeBomb, Poison, 90, 1, Poison, 0.3
+
+dict_pokemon: name, type, hp, attack, defense, speed, [moves; ...]
+add_pokemon: Charmander, Fire, 39, 52, 43, 65, [Ember]
+add_pokemon: Squirtle, Water, 44, 48, 65, 43, [WaterGun]
+add_pokemon: Bulbasaur, Grass, 45, 49, 49, 45, [VineWhip]
+add_pokemon: Pikachu, Electric, 35, 55, 30, 90, [ThunderShock]
+add_pokemon: Arbok, Poison, 60, 95, 69, 80, [PoisonSting; SludgeBomb]
+add_pokemon: Weezing, Poison, 65, 90, 120, 60, [Tackle; SludgeBomb]
+add_pokemon: Articuno, Ice, 90, 85, 100, 85, [IceBeam; Blizzard]
+add_pokemon: Zapdos, Electric, 90, 90, 85, 100, [ThunderShock; ZapCannon]
+add_pokemon: Moltres, Fire, 90, 100, 90, 90, [Ember; Flamethrower]
+
+dict_trainer: name, [pokemons; ...], [(item: qtde); ...]
+add_trainer: Red, [Charmander], [(Potion: 10); (SuperPotion: 5); (Antidote: 5); (BurnHeal: 5); (FullHeal: 5)]
+add_trainer: Blue, [Squirtle], [(Potion: 10); (SuperPotion: 5); (Antidote: 5); (BurnHeal: 5); (FullHeal: 5)]
+add_trainer: Green, [Bulbasaur], [(Potion: 10); (SuperPotion: 5); (Antidote: 5); (BurnHeal: 5); (FullHeal: 5)]
+add_trainer: Yellow, [Pikachu], [(Potion: 10); (SuperPotion: 5); (Antidote: 5); (BurnHeal: 5); (FullHeal: 5)]
+add_trainer: Surge, [Zapdos], [(Potion: 10); (SuperPotion: 5); (Antidote: 5); (BurnHeal: 5); (FullHeal: 5)]
+add_trainer: Noland, [Articuno], [(Potion: 10); (SuperPotion: 5); (Antidote: 5); (BurnHeal: 5); (FullHeal: 5)]
+add_trainer: Blaine, [Moltres], [(Potion: 10); (SuperPotion: 5); (Antidote: 5); (BurnHeal: 5); (FullHeal: 5)]
+add_trainer: James, [Arbok; Weezing], [(Potion: 10); (SuperPotion: 5); (Antidote: 5); (BurnHeal: 5); (FullHeal: 5)]
+
+dict_tournament: [trainers; ...]
+add_tournament: [Red; Blue; Green; Yellow; Surge; Noland, Blaine; James]
+
+run_tournament()

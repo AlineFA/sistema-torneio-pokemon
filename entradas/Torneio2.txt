@@ -1,0 +1,67 @@
+dict_type: name, path_chart
+add_type: Grass, inputs/typeChart.csv
+add_type: Fire, inputs/typeChart.csv
+add_type: Water, inputs/typeChart.csv
+add_type: Psychic, inputs/typeChart.csv
+add_type: Ground, inputs/typeChart.csv
+add_type: Dragon, inputs/typeChart.csv
+add_type: Normal, inputs/typeChart.csv
+add_type: Poison, inputs/typeChart.csv
+add_type: Flying, inputs/typeChart.csv
+add_type: Dark, inputs/typeChart.csv
+
+dict_tmove: name, type, power, accuracy, effect, effect_chance
+add_move: Tackle, Normal, 40, 1
+add_move: Ember, Fire, 40, 1, Burn, 0.3
+add_move: WaterGun, Water, 40, 1
+add_move: Leafage, Grass, 40, 1
+add_move: MagicalLeaf, Grass, 60, 1
+add_move: MegaDrain, Grass, 40, 1
+add_move: FlameCharge, Fire, 50, 1
+add_move: Flamethrower, Fire, 90, 1, Burn, 0.2
+add_move: HydroPump, Water, 110, 0.80
+add_move: WaterPulse, Water, 60, 1
+add_move: RazorLeaf, Grass, 55, 0.95
+add_move: PoisonSting, Poison, 80, 1, Poison, 0.5
+add_move: SludgeBomb, Poison, 90, 1, Poison, 0.3
+add_move: Gust, Flying, 40, 1
+add_move: SkyAttack, Flying, 100, 0.95
+add_move: AeroBlast, Flying, 140, 0.9
+add_move: FireBlast, Fire, 110, 0.85
+add_move: AquaTail, Water, 90, 0.9
+add_move: MudShot, Ground, 55, 0.95
+add_move: Earthquake, Ground, 100, 1
+add_move: DragonAscent, Flying, 120, 1
+add_move: DragonPulse, Dragon, 85, 1
+add_move: Crunch, Dark, 100, 1
+
+dict_pokemon: name, type, hp, attack, defense, speed, [moves; ...]
+add_pokemon: Bayleef, Grass, 60, 62, 80, 60, [Tackle; RazorLeaf; MagicalLeaf]
+add_pokemon: Quilava, Fire, 58, 64, 58, 80, [Tackle; Ember; Flamethrower]
+add_pokemon: Croconaw, Water, 65, 80, 80, 58, [Tackle; WaterGun; HydroPump]
+add_pokemon: Lugia, Psychic, 106, 90, 130, 110, [Gust; AeroBlast; SkyAttack]
+add_pokemon: Ho-oh, Fire, 106, 130, 90, 90, [Gust; FireBlast; SkyAttack]
+add_pokemon: Sceptile, Grass, 70, 85, 65, 120, [Leafage; MegaDrain; MagicalLeaf; Leafage]
+add_pokemon: Blaziken, Fire, 80, 120, 70, 80, [Ember; Flamethrower; FlameCharge]
+add_pokemon: Swampert, Water, 100, 110, 90, 60, [WaterGun; WaterPulse; HydroPump]
+add_pokemon: Kyogre, Water, 100, 100, 90, 90, [WaterPulse; HydroPump; AquaTail]
+add_pokemon: Groudon, Ground, 100, 150, 140, 90, [MudShot; Earthquake; FireBlast]
+add_pokemon: Rayquaza, Dragon, 105, 150, 90, 95, [DragonAscent; DragonPulse; Crunch]
+add_pokemon: MissingNo, Normal, 256, 256, 256, 256, [Leafage; Ember; WaterGun; Ember; MegaDrain; WaterPulse]
+add_pokemon: GalarianGrowlithe, Fire, 55, 68, 64, 31, [Tackle]
+
+dict_trainer: name, [pokemons; ...], [(item: qtde); ...]
+add_trainer: Gold, [Quilava], [(Potion: 10); (SuperPotion: 5); (Antidote: 5); (BurnHeal: 5); (FullHeal: 5)]
+add_trainer: Silver, [Croconaw], [(Potion: 10); (SuperPotion: 5); (Antidote: 5); (BurnHeal: 5); (FullHeal: 5)]
+add_trainer: Crystal, [Bayleef], [(Potion: 10); (SuperPotion: 5); (Antidote: 5); (BurnHeal: 5); (FullHeal: 5)]
+add_trainer: Lance, [Lugia; Ho-oh], [(Potion: 10); (SuperPotion: 5); (HyperPotion: 5); (Antidote: 5); (BurnHeal: 5); (FullHeal: 5)]
+add_trainer: Ruby, [Sceptile], [(Potion: 10); (SuperPotion: 5); (Antidote: 5); (BurnHeal: 5); (FullHeal: 5)]
+add_trainer: Sapphire, [Blaziken], [(Potion: 10); (SuperPotion: 5); (Antidote: 5); (BurnHeal: 5); (FullHeal: 5)]
+add_trainer: Emerald, [Swampert], [(Potion: 10); (SuperPotion: 5); (Antidote: 5); (BurnHeal: 5); (FullHeal: 5)]
+add_trainer: Steven, [Kyogre; Groudon; Rayquaza], [(Potion: 10); (SuperPotion: 5); (HyperPotion: 5); (Antidote: 5); (BurnHeal: 5); (FullHeal: 5)]
+add_trainer: Phantom, [GalarianGrowlithe; MissingNo], [(Potion: 10); (SuperPotion: 5); (Antidote: 5); (BurnHeal: 5); (FullHeal: 5)]
+
+dict_tournament: [trainers; ...]
+add_tournament: [Gold; Silver; Crystal; Phantom; Ruby; Sapphire; Emerald; Lance; Steven; Phantom]
+
+run_tournament()
