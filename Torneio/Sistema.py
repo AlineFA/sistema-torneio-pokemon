@@ -30,3 +30,24 @@ class Tipo:
 
     def __str__(self):
         return self.__nome
+    
+
+class Pokemon:
+        """Representa um Pokémon no sistema."""
+
+        def __init__(self, nome, tipo, hp, ataque, defesa, velocidade):
+            nivel = 50
+
+            self.__nome = nome[:15]
+            self.__tipo = tipo
+
+            vida_calculada = int(((2 * hp) * nivel) / 100) + nivel + 10
+            self.__vida_max = min(vida_calculada, 255)
+            self.__vida_atual = self.__vida_max
+
+            self.__ataque = min(int(((2 * ataque) * nivel) / 100) + 5, 255)
+            self.__defesa = min(int(((2 * defesa) * nivel) / 100) + 5, 255)
+            self.__velocidade = min(int(((2 * velocidade) * nivel) / 100) + 5, 255)
+
+            self.__golpes = []
+            self.__status = []
