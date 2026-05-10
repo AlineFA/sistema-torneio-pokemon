@@ -115,6 +115,7 @@ class Pokemon:
     def __str__(self):
         return f"{self.__nome} | Tipo: {self.__tipo} | Vida Máxima: {self.__vida_max} | Vida atual {self.__vida_atual}"
 
+
 class EfeitoStatus(ABC):
 
     """Classe abstrata que serve de base para os efeitos gerados pelos status, 
@@ -127,8 +128,9 @@ class EfeitoStatus(ABC):
         return self.__nome
 
     @abstractmethod
-    def aplicar(self):
+    def aplicar(self, pokemon):
         pass
+
 
 class Queimadura(EfeitoStatus):
     """Subclasse de EfeitoStatus que aplica 3 pontos de dano por turno ao Pokémon afetado"""
@@ -138,6 +140,7 @@ class Queimadura(EfeitoStatus):
 
     def aplicar(self, pokemon):
         pokemon.receber_dano(3)
+
 
 class Envenenado(EfeitoStatus):
     """Subclasse de EfeitoStatus que aplica 5 pontos de dano por turno ao Pokémon afetado"""
