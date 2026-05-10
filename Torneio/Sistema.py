@@ -126,5 +126,6 @@ class EfeitoStatus(ABC):
     def get_nome(self):
         return self.__nome
 
-    
-    
+    @abstractmethod
+    def aplicar(self):
+        pass
