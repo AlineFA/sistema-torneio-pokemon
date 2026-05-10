@@ -106,3 +106,6 @@ class Pokemon:
             if status in self.__status:
                 self.__status.remove(status)
        
+        def esta_desmaiado(self):
+            """Retorna True se o Pokémon está sem vida e fora de combate."""
+            return self.__vida_atual == 0
