@@ -101,5 +101,8 @@ class Pokemon:
             if status not in self.__status:
                 self.__status.append(status)
 
-        
+        def remover_status (self, status):
+            """Remove um status, mas somente se ele estiver aplicado ao Pokémon.""" 
+            if status in self.__status:
+                self.__status.remove(status)
        
