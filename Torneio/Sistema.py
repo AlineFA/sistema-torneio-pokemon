@@ -34,6 +34,42 @@ class Tipo:
         return self.__nome
     
 
+class EfeitoStatus(ABC):
+
+    """Classe abstrata que serve de base para os efeitos gerados pelos status, 
+    define o padrão que suas subclasses devem seguir usando o método aplicar()"""
+
+    def __init__(self, nome):
+        self.__nome = nome[:10]
+
+    def get_nome(self):
+        return self.__nome
+
+    @abstractmethod
+    def aplicar(self, pokemon):
+        pass
+
+
+class Queimadura(EfeitoStatus):
+    """Subclasse de EfeitoStatus que aplica 3 pontos de dano por turno ao Pokémon afetado"""
+    
+    def __init__(self):
+        super().__init__("Queimadura")
+
+    def aplicar(self, pokemon):
+        pokemon.receber_dano(3)
+
+
+class Envenenado(EfeitoStatus):
+    """Subclasse de EfeitoStatus que aplica 5 pontos de dano por turno ao Pokémon afetado"""
+
+    def __init__(self):
+        super().__init__("Envenenado")
+
+    def aplicar(self, pokemon):
+        pokemon.receber_dano(5)
+
+
 class Pokemon:
     """Representa um Pokémon no sistema."""
 
@@ -114,40 +150,3 @@ class Pokemon:
         
     def __str__(self):
         return f"{self.__nome} | Tipo: {self.__tipo} | Vida Máxima: {self.__vida_max} | Vida atual {self.__vida_atual}"
-
-
-class EfeitoStatus(ABC):
-
-    """Classe abstrata que serve de base para os efeitos gerados pelos status, 
-    define o padrão que suas subclasses devem seguir usando o método aplicar()"""
-
-    def __init__(self, nome):
-        self.__nome = nome[:10]
-
-    def get_nome(self):
-        return self.__nome
-
-    @abstractmethod
-    def aplicar(self, pokemon):
-        pass
-
-
-class Queimadura(EfeitoStatus):
-    """Subclasse de EfeitoStatus que aplica 3 pontos de dano por turno ao Pokémon afetado"""
-    
-    def __init__(self):
-        super().__init__("Queimadura")
-
-    def aplicar(self, pokemon):
-        pokemon.receber_dano(3)
-
-
-class Envenenado(EfeitoStatus):
-    """Subclasse de EfeitoStatus que aplica 5 pontos de dano por turno ao Pokémon afetado"""
-
-    def __init__(self):
-        super().__init__("Envenenado")
-
-    def aplicar(self, pokemon):
-        pokemon.receber_dano(5)
-
