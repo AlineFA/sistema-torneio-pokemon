@@ -136,4 +136,5 @@ class Queimadura(EfeitoStatus):
     def __init__(self):
         super().__init__("Queimadura")
 
-    
+    def aplicar(self, pokemon):
+        pokemon.receber_dano(3)
