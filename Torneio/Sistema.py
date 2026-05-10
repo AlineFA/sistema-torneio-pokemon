@@ -96,4 +96,10 @@ class Pokemon:
             if len(self.__golpes) < 4:
                 self.__golpes.append(golpe)
          
-    
+        def adicionar_status (self, status):
+            """Adiciona um status, mas somente se o Pokémon não estiver com o mesmo.""" 
+            if status not in self.__status:
+                self.__status.append(status)
+
+        
+       
