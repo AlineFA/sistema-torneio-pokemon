@@ -85,4 +85,8 @@ class Pokemon:
             if self.__vida_atual < 0:
                 self.__vida_atual = 0
 
-       
+        def receber_cura(self, cura):
+            """Adiciona na vida atual a cura recebida. A vida nunca fica acima do máximo."""
+            self.__vida_atual += cura
+            if self.__vida_atual > self.__vida_max:
+                self.__vida_atual = self.__vida_max
