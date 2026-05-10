@@ -121,7 +121,7 @@ class EfeitoStatus(ABC):
     define o padrão que suas subclasses devem seguir usando o método aplicar()"""
 
     def __init__(self, nome):
-        self.__nome = nome [:10]
+        self.__nome = nome[:10]
 
     def get_nome(self):
         return self.__nome
@@ -138,3 +138,7 @@ class Queimadura(EfeitoStatus):
 
     def aplicar(self, pokemon):
         pokemon.receber_dano(3)
+
+
+
+
