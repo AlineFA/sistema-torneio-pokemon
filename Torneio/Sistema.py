@@ -79,3 +79,10 @@ class Pokemon:
         def get_status(self):
             return self.__status
         
+        def receber_dano(self, dano):
+            """Reduz a vida atual pelo dano recebido. A vida nunca fica abaixo de zero."""
+            self.__vida_atual -= dano
+            if self.__vida_atual < 0:
+                self.__vida_atual = 0
+
+       
