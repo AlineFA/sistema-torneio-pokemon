@@ -49,6 +49,9 @@ class EfeitoStatus(ABC):
     def aplicar(self, pokemon):
         pass
 
+    def __str__(self):
+        return self.get_nome()
+
 
 class Queimadura(EfeitoStatus):
     """Subclasse de EfeitoStatus que aplica 3 pontos de dano por turno ao Pokémon afetado"""
