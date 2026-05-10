@@ -13,7 +13,7 @@ class Tipo:
 
     def multiplicador_efetividade(self, tipo_alvo):
         """
-        Retorna o multiplicador de dano deste tipo contra o tipo alvo.
+        Retorna o multiplicador de dano deste tipo contra o tipo alvo. 
         Se o tipo alvo não estiver definido, retorna 1 (neutro).
         """
 
@@ -51,3 +51,31 @@ class Pokemon:
 
             self.__golpes = []
             self.__status = []
+
+        def get_nome(self):
+            return self.__nome
+        
+        def get_tipo(self):
+            return self.__tipo
+        
+        def get_vida_maxima(self):
+            return self.__vida_max
+        
+        def get_vida_atual(self):
+            return self.__vida_atual
+        
+        def get_ataque(self):
+            return self.__ataque 
+
+        def get_defesa(self):
+            return self.__defesa
+        
+        def get_velocidade(self):
+            return self.__velocidade
+        
+        def get_golpes(self):
+            return self.__golpes
+        
+        def get_status(self):
+            return self.__status
+        
