@@ -90,3 +90,10 @@ class Pokemon:
             self.__vida_atual += cura
             if self.__vida_atual > self.__vida_max:
                 self.__vida_atual = self.__vida_max
+
+        def adicionar_golpe(self, golpe):
+            """Adiciona um golpe. A quantidade de golpes nunca é maior que 4."""
+            if len(self.__golpes) < 4:
+                self.__golpes.append(golpe)
+         
+    
