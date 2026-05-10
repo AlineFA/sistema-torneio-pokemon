@@ -129,3 +129,11 @@ class EfeitoStatus(ABC):
     @abstractmethod
     def aplicar(self):
         pass
+
+class Queimadura(EfeitoStatus):
+    """Subclasse de EfeitoStatus que aplica 3 pontos de dano por turno ao Pokémon afetado"""
+    
+    def __init__(self):
+        super().__init__("Queimadura")
+
+    
