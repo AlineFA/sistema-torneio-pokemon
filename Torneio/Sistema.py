@@ -109,3 +109,7 @@ class Pokemon:
         def esta_desmaiado(self):
             """Retorna True se o Pokémon está sem vida e fora de combate."""
             return self.__vida_atual == 0
+        
+        def __str__(self):
+            return f"{self.__nome} | Tipo: {self.__tipo} | Vida Máxima: {self.__vida_max} | Vida atual {self.__vida_atual}"
+
