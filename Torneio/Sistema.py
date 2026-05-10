@@ -139,6 +139,12 @@ class Queimadura(EfeitoStatus):
     def aplicar(self, pokemon):
         pokemon.receber_dano(3)
 
+class Envenenado(EfeitoStatus):
+    """Subclasse de EfeitoStatus que aplica 5 pontos de dano por turno ao Pokémon afetado"""
 
+    def __init__(self):
+        super().__init__("Envenenado")
 
+    def aplicar(self, pokemon):
+        pokemon.receber_dano(5)
 
