@@ -453,6 +453,9 @@ class Treinador():
 # ==================== BATALHA ====================
 
 class Batalha():
+    """Representa uma batalha entre dois treinadores,
+    simulando os turnos e registrando os acontecimentos."""
+
     def __init__(self, treinador1, treinador2):
         self.__treinador1 = treinador1
         self.__treinador2 = treinador2 
@@ -471,9 +474,16 @@ class Batalha():
         return self.__registro
     
     def registrar(self, mensagem):
+        """Adiciona uma mensagem ao registro da batalha"""
+
         self.__registro.append(mensagem)
     
     def simular(self):
+        """Simula a batalha turno a turno entre os dois treinadores, 
+        aplicando efeitos de status, executando ações e verificando 
+        desmaiados até que um dos treinadores não tenha mais Pokémons 
+        disponíveis."""
+
         self.registrar(f"Batalha: {self.__treinador1.nome} vs {self.__treinador2.nome}")
         pokemon1 = self.__treinador1.escolher_pokemon()
         pokemon2 = self.__treinador2.escolher_pokemon()
@@ -532,6 +542,8 @@ class Batalha():
 
     @property
     def vencedor(self):
+        """Retorna o treinador vencedor da batalha,
+        ou seja, o que ainda possui Pokémons disponíveis."""
         if self.__treinador1.tem_pokemon_disponivel():
             return self.__treinador1
         return self.__treinador2
