@@ -390,3 +390,15 @@ class Treinador():
     def itens(self):
         return self.__itens
     
+    def tem_pokemon_disponivel(self):
+        for pokemon in self.pokemons:
+            if not pokemon.esta_desmaiado():
+                return True
+            return False
+        
+    def escolher_pokemon(self):
+        pokemons_acordados = []
+        for pokemon in self.pokemons:
+            if not pokemon.esta_desmaiado():
+                pokemons_acordados.append(pokemon)
+        return random.choice(pokemons_acordados)
