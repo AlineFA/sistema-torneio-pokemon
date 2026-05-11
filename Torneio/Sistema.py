@@ -419,7 +419,10 @@ class Treinador():
         for pokemon in self.pokemons:
             if not pokemon.esta_desmaiado():
                 pokemons_acordados.append(pokemon)
-        return random.choice(pokemons_acordados)
+
+        if pokemons_acordados:
+            return random.choice(pokemons_acordados)
+        return None
     
 
     def escolher_acao(self, pokemon):
@@ -441,3 +444,4 @@ class Treinador():
                 if itens_disponiveis:
                     item = random.choice(itens_disponiveis)
                     return AcaoItem(item)
+                
