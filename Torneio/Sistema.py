@@ -221,8 +221,43 @@ class CuraTotal(Item):
     def usar(self, pokemon):
         if self.pode_usar(pokemon):
              pokemon.get_status().clear()
-                
 
+
+class Acao(ABC):
+    """Classe abstrata que representa uma ação
+    realizada durante a batalha."""
+
+    @abstractmethod
+    def executar(self):
+        pass
+
+
+class AcaoAtq(Acao):
+    """Subclasse de Acao que representa um ataque com um golpe."""
+
+    def __init__ (self, golpe):
+        self.__golpe = golpe
+
+    def get_golpe(self):
+        return self.__golpe
+
+    def executar(self, pokemon):
+        pass
+
+
+class AcaoItem(Acao):
+    """Subclasse de Acao que representa o uso de um item."""
+
+    def __init__ (self, item):
+        self.__item = item
+
+    def get_item(self):
+        return self.__item
+
+    def executar(self, pokemon):
+        pass
+
+                
 class Pokemon:
     """Representa um Pokémon no sistema."""
 
