@@ -145,9 +145,25 @@ class Pocao(Item):
     def pode_usar(self, pokemon):
         return pokemon.get_vida_atual() < 0.8 * pokemon.get_vida_maxima()
         
-    def usar(self,pokemon):
+    def usar(self, pokemon):
         if self.pode_usar(pokemon):
             pokemon.receber_cura(20)
+
+
+class SuperPocao(Item):
+    """Subclasse de Item que verifica se o Pokémon pode usar 
+    a super poção de cura e aplica ela adicionando 50 pontos de vida
+    caso o Pokémon esteja com menos de 50% da sua vida"""
+
+    def __init__(self):
+        super().__init__(False)
+
+    def pode_usar(self, pokemon):
+        return pokemon.get_vida_atual() < 0.5 * pokemon.get_vida_maxima()
+    
+    def usar(self, pokemon):
+        if self.pode_usar(pokemon):
+            pokemon.receber_cura(50)
 
 
 class Pokemon:
