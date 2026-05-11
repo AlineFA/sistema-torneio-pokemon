@@ -228,6 +228,10 @@ class Pokemon:
 
         return self.__vida_atual == 0
         
+    def limpar_status(self):
+        """Remove todos os efeitos de status do Pokémon."""
+        self.__status.clear()
+
     def __str__(self):
         return f"{self.__nome} | Tipo: {self.__tipo} | Vida Máxima: {self.__vida_max} | Vida atual {self.__vida_atual}"
 
@@ -340,7 +344,7 @@ class CuraTotal(Item):
         
     def usar(self, pokemon):
         if self.pode_usar(pokemon):
-             pokemon.status.clear()
+             pokemon.limpar_status() #nao acessa a lista diretamente
 
 
 # ==================== ACAO ====================
