@@ -421,3 +421,6 @@ class Treinador():
         if random.random() < 0.7:
             golpe = random.choice(pokemon.golpes)
             return AcaoAtq(golpe)
+        else:
+            item = random.choice(self.__itens)
+            return AcaoItem(item)
