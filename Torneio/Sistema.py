@@ -214,6 +214,8 @@ class Pokemon:
             self.__status.append(status)
 
     def aplicar_status(self):
+        """Aplica todos os efeitos de status ativos no Pokémon, 
+        causando dano ou outros efeitos a cada turno."""
         for efeito in self.__status:
             efeito.aplicar(self)
             
