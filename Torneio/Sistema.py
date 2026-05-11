@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
 import random
 
+# ==================== TIPOS ====================
 class Tipo:
     """Representa o tipo de um Pokémon ou de um golpe."""
 
@@ -34,6 +35,8 @@ class Tipo:
     def __str__(self):
         return self.__nome
     
+
+# ==================== EFEITOS DE STATUS ====================
 
 class EfeitoStatus(ABC):
     """Classe abstrata que serve de base para os efeitos gerados pelos status, 
@@ -73,6 +76,8 @@ class Envenenado(EfeitoStatus):
     def aplicar(self, pokemon):
         pokemon.receber_dano(5)
 
+
+# ==================== GOLPE ====================
 
 class Golpe():
     """Aplica um golpe a um Pokémon"""
@@ -123,6 +128,8 @@ class Golpe():
     def __str__(self):
         return f"Nome: {self.__nome} | Tipo: {self.__tipo} | Poder: {self.__poder} | Acuracia: {self.__acuracia} | Efeito: {self.__efeito} | Chance: {self.__chance}"
 
+
+# ==================== POKEMON ====================
                 
 class Pokemon:
     """Representa um Pokémon no sistema."""
@@ -224,6 +231,8 @@ class Pokemon:
     def __str__(self):
         return f"{self.__nome} | Tipo: {self.__tipo} | Vida Máxima: {self.__vida_max} | Vida atual {self.__vida_atual}"
 
+
+# ==================== ITEM ====================
 
 class Item(ABC):
     """Classe abstrata que serve como base para os itens utilizados nas batalhas. 
@@ -334,6 +343,8 @@ class CuraTotal(Item):
              pokemon.status.clear()
 
 
+# ==================== ACAO ====================
+
 class Acao(ABC):
     """Classe abstrata que representa uma ação
     realizada durante a batalha."""
@@ -371,6 +382,8 @@ class AcaoItem(Acao):
         pass
 
 
+# ==================== TREINADOR ====================
+
 class Treinador():
 
     def __init__ (self, nome, pokemons):
@@ -402,3 +415,9 @@ class Treinador():
             if not pokemon.esta_desmaiado():
                 pokemons_acordados.append(pokemon)
         return random.choice(pokemons_acordados)
+    
+
+    def escolher_acao(self, pokemon):
+        if random.random() < 0.7:
+            golpe = random.choice(pokemon.golpes)
+            return AcaoAtq(golpe)
