@@ -143,7 +143,7 @@ class Pocao(Item):
         super().__init__(False)
 
     def pode_usar(self, pokemon):
-        return pokemon.get_vida_atual() < 0.8 * pokemon.get_vida_max()
+        return pokemon.get_vida_atual() < 0.8 * pokemon.get_vida_maxima()
         
     def usar(self,pokemon):
         if self.pode_usar(pokemon):
