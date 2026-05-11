@@ -166,6 +166,27 @@ class SuperPocao(Item):
             pokemon.receber_cura(50)
 
 
+class Antidoto(Item): 
+    """Subclasse de Item que permite que o Pokémon use o Antídoto
+     caso esteja sob o efeito de Envenenamento"""
+
+    def __init__(self):
+        super().__init__(True)
+
+    def pode_usar(self, pokemon):
+        for efeito in pokemon.get_status():
+            if isinstance(efeito, Envenenado):
+                return True
+        return False 
+    
+    def usar(self, pokemon):
+        if self.pode_usar(pokemon):
+            for efeito in pokemon.get_status():
+                if isinstance(efeito, Envenenado):
+                    pokemon.remover_status(efeito)
+                    break
+
+
 class Pokemon:
     """Representa um Pokémon no sistema."""
 
