@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+import random
 
 class Tipo:
     """Representa o tipo de um Pokémon ou de um golpe."""
@@ -100,6 +101,14 @@ class Golpe():
     
     def get_chance(self):
         return self.__chance
+
+    def calcular_dano(self, pokemon_alvo, pokemon_atacante):
+        nivel = 50
+        a = pokemon_atacante.get_ataque()
+        d = pokemon_alvo.get_defesa()
+        base = int(((2 * nivel)/5) * self.__poder * a/d)/50 + 2
+
+
 
 
 class Pokemon:
