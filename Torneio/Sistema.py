@@ -76,6 +76,8 @@ class Envenenado(EfeitoStatus):
 
 class Golpe():
 
+    """Aplica um golpe a um Pokémon"""
+
     def __init__ (self, nome, tipo, poder, acuracia, efeito, chance):
         self.__nome = nome[:15]
         self.__tipo = tipo
@@ -103,6 +105,9 @@ class Golpe():
         return self.__chance
 
     def calcular_dano(self, pokemon_alvo, pokemon_atacante):
+        
+        """Calcula o dano aplicado ao Pokémon através de um cálculo base e um multiplicador"""
+
         nivel = 50
         a = pokemon_atacante.get_ataque()
         d = pokemon_alvo.get_defesa()
@@ -110,6 +115,9 @@ class Golpe():
         modificador = random.uniform(0.85, 1) * self.__tipo.multiplicador_efetividade(pokemon_alvo.get_tipo())
         dano = base * modificador 
         return dano 
+
+    def __str__(self):
+        return f"Nome: {self.__nome} | Tipo: {self.__tipo} | Poder: {self.__poder} | Acuracia: {self.__acuracia} | Efeito: {self.__efeito} | Chance: {self.__chance}"
 
 
 class Pokemon:
