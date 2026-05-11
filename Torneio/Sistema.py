@@ -432,7 +432,7 @@ class Treinador():
     
 
     def escolher_acao(self, pokemon):
-        """"Escolhe aleatoriamente uma ação, com 70% de chance 
+        """Escolhe aleatoriamente uma ação, com 70% de chance 
         de atacar com um golpe e 30% de usar um item, priorizando 
         itens de cura."""
 
