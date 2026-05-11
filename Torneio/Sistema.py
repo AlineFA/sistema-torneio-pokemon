@@ -385,6 +385,8 @@ class AcaoItem(Acao):
 # ==================== TREINADOR ====================
 
 class Treinador():
+    """Representa um treinador no sistema, possuindo 
+    até 6 Pokémons e itens para uso durante as batalhas."""
 
     def __init__ (self, nome, pokemons):
         self.__nome = nome[:20]
@@ -404,12 +406,15 @@ class Treinador():
         return self.__itens
     
     def tem_pokemon_disponivel(self):
+        """Verifica se tem pelo menos um Pokémon não desmaiado"""
         for pokemon in self.pokemons:
             if not pokemon.esta_desmaiado():
                 return True
-            return False
+        return False
         
     def escolher_pokemon(self):
+        """Escolhe aleatoriamente um Pokémon não desmaiado"""
+
         pokemons_acordados = []
         for pokemon in self.pokemons:
             if not pokemon.esta_desmaiado():
@@ -418,6 +423,10 @@ class Treinador():
     
 
     def escolher_acao(self, pokemon):
+        """"Escolhe aleatoriamente uma ação, com 70% de chance 
+        de atacar com um golpe e 30% de usar um item, priorizando 
+        itens de cura."""
+
         if random.random() < 0.7:
             golpe = random.choice(pokemon.golpes)
             return AcaoAtq(golpe)
