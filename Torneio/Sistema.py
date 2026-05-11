@@ -555,3 +555,24 @@ class Torneio:
     def vencedor(self):
         return self.__vencedor
     
+    def executar(self):
+        while len(self.treinadores) > 1:
+            treinador1 = random.choice(self.treinadores)
+            treinador2 = random.choice(self.treinadores)
+            while treinador1 == treinador2:
+                treinador2 = random.choice(self.treinadores)
+            batalha = Batalha(treinador1, treinador2)
+            batalha.simular()
+            vencedor = batalha.vencedor
+            self.historico.append(batalha)
+            if vencedor == treinador1:
+                perdedor = treinador2
+            else:
+                perdedor = treinador1
+            self.__treinadores.remove(perdedor)
+        self.__vencedor = self.__treinadores [0]
+        
+            
+
+
+    
