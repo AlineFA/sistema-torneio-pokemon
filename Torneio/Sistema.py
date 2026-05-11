@@ -538,6 +538,9 @@ class Batalha():
     
 
 class Torneio:
+    """Representa um torneio entre treinadores, gerenciando as
+     batalhas, o histórico e determinando o vencedor final."""
+    
     def __init__ (self, treinadores):
         self.__treinadores = treinadores
         self.__historico = []
@@ -556,6 +559,9 @@ class Torneio:
         return self.__vencedor
     
     def executar(self):
+        """Executa o torneio realizando batalhas entre os treinadores, 
+        eliminando os perdedores até restar apenas um vencedor."""
+
         while len(self.treinadores) > 1:
             treinador1 = random.choice(self.treinadores)
             treinador2 = random.choice(self.treinadores)
