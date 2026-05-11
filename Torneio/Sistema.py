@@ -474,6 +474,7 @@ class Batalha():
         self.__registro.append(mensagem)
     
     def simular(self):
+        self.registrar(f"Batalha: {self.__treinador1.nome} vs {self.__treinador2.nome}")
         pokemon1 = self.__treinador1.escolher_pokemon()
         pokemon2 = self.__treinador2.escolher_pokemon()
         while self.__treinador1.tem_pokemon_disponivel() and self.__treinador2.tem_pokemon_disponivel():
@@ -502,18 +503,29 @@ class Batalha():
             if isinstance(acao1, AcaoAtq):
                 dano = acao1.golpe.calcular_dano(segundo, primeiro)
                 segundo.receber_dano(dano)
+                self.registrar(f"{primeiro.nome} usou {acao1.golpe.nome} e causou {dano} de dano!")
             elif isinstance(acao1, AcaoItem):
                 acao1.item.usar(primeiro)
+                self.registrar(f"{primeiro.nome} usou um item!")
 
 
             if isinstance(acao2, AcaoAtq):
                 dano = acao2.golpe.calcular_dano(primeiro, segundo)
                 primeiro.receber_dano(dano)
+                self.registrar(f"{segundo.nome} usou {acao2.golpe.nome} e causou {dano} de dano!")
             elif isinstance(acao2, AcaoItem):
                 acao2.item.usar(segundo)
+                self.registrar(f"{segundo.nome} usou um item!")
 
 
             if segundo.esta_desmaiado():
+                self.registrar(f"{segundo.nome} desmaiou!")
                 segundo = treinador_segundo.escolher_pokemon()
             if primeiro.esta_desmaiado():
-                primeiro =treinador_primeiro.escolher_pokemon()
+                self.registrar(f"{primeiro.nome} desmaiou!")
+                primeiro = treinador_primeiro.escolher_pokemon()
+
+        if self.__treinador1.tem_pokemon_disponivel():
+            self.registrar(f"Vencedor: {self.__treinador1.nome}")
+        else:
+            self.registrar(f"Vencedor: {self.__treinador2.nome}")
