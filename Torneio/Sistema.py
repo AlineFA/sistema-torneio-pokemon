@@ -15,10 +15,8 @@ class Tipo:
         return self.__efetividade
 
     def multiplicador_efetividade(self, tipo_alvo):
-        """
-        Retorna o multiplicador de dano deste tipo contra o tipo alvo. 
-        Se o tipo alvo não estiver definido, retorna 1 (neutro).
-        """
+        """Retorna o multiplicador de dano deste tipo contra o tipo alvo. 
+        Se o tipo alvo não estiver definido, retorna 1 (neutro)."""
 
         if tipo_alvo is None:
             return 1
@@ -36,7 +34,6 @@ class Tipo:
     
 
 class EfeitoStatus(ABC):
-
     """Classe abstrata que serve de base para os efeitos gerados pelos status, 
     define o padrão que suas subclasses devem seguir usando o método aplicar()"""
 
@@ -75,7 +72,6 @@ class Envenenado(EfeitoStatus):
 
 
 class Golpe():
-
     """Aplica um golpe a um Pokémon"""
 
     def __init__ (self, nome, tipo, poder, acuracia, efeito=None, chance=0):
@@ -105,7 +101,6 @@ class Golpe():
         return self.__chance
 
     def calcular_dano(self, pokemon_alvo, pokemon_atacante):
-        
         """Calcula o dano aplicado ao Pokémon através de um cálculo base e um multiplicador"""
 
         nivel = 50
@@ -118,6 +113,25 @@ class Golpe():
 
     def __str__(self):
         return f"Nome: {self.__nome} | Tipo: {self.__tipo} | Poder: {self.__poder} | Acuracia: {self.__acuracia} | Efeito: {self.__efeito} | Chance: {self.__chance}"
+
+
+class Item(ABC):
+    """Classe abstrata que serve como base para os itens utilizados nas batalhas. 
+    Possui os métodos pode_usar() e usar() que serão implementados pelas subclasses"""
+
+    def __init__(self, cura_status):
+        self.__cura_status = cura_status
+
+    def get_cura_status(self):
+        return self.__cura_status
+
+    @abstractmethod
+    def pode_usar(self, pokemon):
+        pass
+
+    @abstractmethod
+    def usar(self, pokemon):
+        pass
 
 
 class Pokemon:
@@ -169,23 +183,27 @@ class Pokemon:
         
     def receber_dano(self, dano):
         """Reduz a vida atual pelo dano recebido. A vida nunca fica abaixo de zero."""
+
         self.__vida_atual -= dano
         if self.__vida_atual < 0:
             self.__vida_atual = 0
 
     def receber_cura(self, cura):
         """Adiciona na vida atual a cura recebida. A vida nunca fica acima do máximo."""
+
         self.__vida_atual += cura
         if self.__vida_atual > self.__vida_max:
             self.__vida_atual = self.__vida_max
 
     def adicionar_golpe(self, golpe):
         """Adiciona um golpe. A quantidade de golpes nunca é maior que 4."""
+
         if len(self.__golpes) < 4:
             self.__golpes.append(golpe)
          
     def adicionar_status (self, status):
         """Adiciona um status, mas somente se o Pokémon não estiver com o mesmo.""" 
+
         if status not in self.__status:
             self.__status.append(status)
 
@@ -195,11 +213,13 @@ class Pokemon:
             
     def remover_status (self, status):
         """Remove um status, mas somente se ele estiver aplicado ao Pokémon.""" 
+
         if status in self.__status:
             self.__status.remove(status)
        
     def esta_desmaiado(self):
         """Retorna True se o Pokémon está sem vida e fora de combate."""
+        
         return self.__vida_atual == 0
         
     def __str__(self):
