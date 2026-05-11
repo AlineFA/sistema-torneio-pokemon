@@ -448,7 +448,9 @@ class Treinador():
                 if itens_disponiveis:
                     item = random.choice(itens_disponiveis)
                     return AcaoItem(item)
-                
+
+
+# ==================== BATALHA ====================
 
 class Batalha():
     def __init__(self, treinador1, treinador2):
@@ -467,3 +469,51 @@ class Batalha():
     @property 
     def registro(self):
         return self.__registro
+    
+    def registrar(self, mensagem):
+        self.__registro.append(mensagem)
+    
+    def simular(self):
+        pokemon1 = self.__treinador1.escolher_pokemon()
+        pokemon2 = self.__treinador2.escolher_pokemon()
+        while self.__treinador1.tem_pokemon_disponivel() and self.__treinador2.tem_pokemon_disponivel():
+            if pokemon1.velocidade > pokemon2.velocidade:
+                primeiro = pokemon1
+                segundo = pokemon2
+            elif pokemon2.velocidade > pokemon1.velocidade:
+                primeiro = pokemon2
+                segundo = pokemon1
+            else:
+                primeiro, segundo = random.choice([(pokemon1, pokemon2), (pokemon2, pokemon1)])
+            
+            primeiro.aplicar_status()
+            segundo.aplicar_status()
+
+            if primeiro == pokemon1:
+                treinador_primeiro = self.__treinador1
+                treinador_segundo = self.__treinador2
+            else:
+                treinador_primeiro = self.__treinador2
+                treinador_segundo = self.__treinador1
+
+            acao1 = treinador_primeiro.escolher_acao(primeiro)
+            acao2 = treinador_segundo.escolher_acao(segundo)
+
+            if isinstance(acao1, AcaoAtq):
+                dano = acao1.golpe.calcular_dano(segundo, primeiro)
+                segundo.receber_dano(dano)
+            elif isinstance(acao1, AcaoItem):
+                acao1.item.usar(primeiro)
+
+
+            if isinstance(acao2, AcaoAtq):
+                dano = acao2.golpe.calcular_dano(primeiro, segundo)
+                primeiro.receber_dano(dano)
+            elif isinstance(acao2, AcaoItem):
+                acao2.item.usar(segundo)
+
+
+            if segundo.esta_desmaiado():
+                segundo = treinador_segundo.escolher_pokemon()
+            if primeiro.esta_desmaiado():
+                primeiro =treinador_primeiro.escolher_pokemon()
