@@ -529,3 +529,9 @@ class Batalha():
             self.registrar(f"Vencedor: {self.__treinador1.nome}")
         else:
             self.registrar(f"Vencedor: {self.__treinador2.nome}")
+
+    @property
+    def vencedor(self):
+        if self.__treinador1.tem_pokemon_disponível():
+            return self.__treinador1
+        return self.__treinador2
