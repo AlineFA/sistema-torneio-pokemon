@@ -134,6 +134,22 @@ class Item(ABC):
         pass
 
 
+class Pocao(Item):
+    """Subclasse de Item que verifica se o Pokémon pode usar 
+    a poção de cura e aplica ela adicionando 20 pontos de vida
+    caso o Pokémon esteja com menos de 80% da sua vida"""
+
+    def __init__(self):
+        super().__init__(False)
+
+    def pode_usar(self, pokemon):
+        return pokemon.get_vida_atual() < 0.8 * pokemon.get_vida_max()
+        
+    def usar(self,pokemon):
+        if self.pode_usar(pokemon):
+            pokemon.receber_cura(20)
+
+
 class Pokemon:
     """Representa um Pokémon no sistema."""
 
@@ -219,7 +235,7 @@ class Pokemon:
        
     def esta_desmaiado(self):
         """Retorna True se o Pokémon está sem vida e fora de combate."""
-        
+
         return self.__vida_atual == 0
         
     def __str__(self):
