@@ -348,3 +348,20 @@ class AcaoItem(Acao):
 
     def executar(self, pokemon):
         pass
+
+
+class Treinador():
+
+    def __init__ (self, nome, pokemons):
+        self.__nome = nome[:20]
+        self.__pokemons = pokemons[:6]
+        self.__itens = [Pocao(), Pocao(), SuperPocao(), Antidoto(), Antiqueimadura(), CuraTotal()]
+
+    def get_nome(self):
+        return self.__nome
+        
+    def get_pokemons(self):
+        return self.__pokemons
+        
+    def get_itens(self):
+        return self.__itens
