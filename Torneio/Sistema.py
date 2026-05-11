@@ -449,3 +449,21 @@ class Treinador():
                     item = random.choice(itens_disponiveis)
                     return AcaoItem(item)
                 
+
+class Batalha():
+    def __init__(self, treinador1, treinador2):
+        self.__treinador1 = treinador1
+        self.__treinador2 = treinador2 
+        self.__registro = []
+    
+    @property
+    def treinador1(self):
+        return self.__treinador1
+    
+    @property
+    def treinador2(self):
+        return self.__treinador2
+    
+    @property 
+    def registro(self):
+        return self.__registro
