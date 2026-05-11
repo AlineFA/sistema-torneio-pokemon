@@ -8,10 +8,12 @@ class Tipo:
         self.__nome = nome
         self.__efetividade = efetividade
 
-    def get_nome(self):
+    @property
+    def nome(self):
         return self.__nome
 
-    def get_efetividade(self):
+    @property
+    def efetividade(self):
         return self.__efetividade
 
     def multiplicador_efetividade(self, tipo_alvo):
@@ -21,7 +23,7 @@ class Tipo:
         if tipo_alvo is None:
             return 1
 
-        nome_alvo = tipo_alvo.get_nome()
+        nome_alvo = tipo_alvo.nome
     
         if nome_alvo in self.__efetividade:
             return self.__efetividade[nome_alvo]
@@ -40,7 +42,8 @@ class EfeitoStatus(ABC):
     def __init__(self, nome):
         self.__nome = nome[:10]
 
-    def get_nome(self):
+    @property
+    def nome(self):
         return self.__nome
 
     @abstractmethod
@@ -48,7 +51,7 @@ class EfeitoStatus(ABC):
         pass
 
     def __str__(self):
-        return self.get_nome()
+        return self.nome
 
 
 class Queimadura(EfeitoStatus):
@@ -82,32 +85,38 @@ class Golpe():
         self.__efeito = efeito
         self.__chance = min(float(chance), 1)
 
-    def get_nome(self):
+    @property
+    def nome(self):
         return self.__nome
     
-    def get_tipo(self):
+    @property
+    def tipo(self):
         return self.__tipo
     
-    def get_poder(self):
+    @property
+    def poder(self):
         return self.__poder
     
-    def get_acuracia(self):
+    @property
+    def acuracia(self):
         return self.__acuracia
     
-    def get_efeito(self):
+    @property
+    def efeito(self):
         return self.__efeito
     
-    def get_chance(self):
+    @property
+    def chance(self):
         return self.__chance
 
     def calcular_dano(self, pokemon_alvo, pokemon_atacante):
         """Calcula o dano aplicado ao Pokémon através de um cálculo base e um multiplicador"""
 
         nivel = 50
-        a = pokemon_atacante.get_ataque()
-        d = pokemon_alvo.get_defesa()
+        a = pokemon_atacante.ataque
+        d = pokemon_alvo.defesa
         base = int(((2 * nivel) / 5) * self.__poder * (a / d) / 50) + 2
-        modificador = random.uniform(0.85, 1) * self.__tipo.multiplicador_efetividade(pokemon_alvo.get_tipo())
+        modificador = random.uniform(0.85, 1) * self.__tipo.multiplicador_efetividade(pokemon_alvo.tipo)
         dano = base * modificador 
         return int(dano)
 
@@ -135,31 +144,40 @@ class Pokemon:
         self.__golpes = []
         self.__status = []
 
-    def get_nome(self):
+    @property
+    def nome(self):
         return self.__nome
-        
-    def get_tipo(self):
+
+    @property    
+    def tipo(self):
         return self.__tipo
-        
-    def get_vida_maxima(self):
+
+    @property   
+    def vida_maxima(self):
         return self.__vida_max
-        
-    def get_vida_atual(self):
+
+    @property    
+    def vida_atual(self):
         return self.__vida_atual
-        
-    def get_ataque(self):
+
+    @property    
+    def ataque(self):
         return self.__ataque 
 
-    def get_defesa(self):
+    @property
+    def defesa(self):
         return self.__defesa
-        
-    def get_velocidade(self):
+
+    @property    
+    def velocidade(self):
         return self.__velocidade
-        
-    def get_golpes(self):
+
+    @property    
+    def golpes(self):
          return self.__golpes
-        
-    def get_status(self):
+
+    @property    
+    def status(self):
         return self.__status
         
     def receber_dano(self, dano):
@@ -214,7 +232,8 @@ class Item(ABC):
     def __init__(self, cura_status):
         self.__cura_status = cura_status
 
-    def get_cura_status(self):
+    @property
+    def cura_status(self):
         return self.__cura_status
 
     @abstractmethod
@@ -235,7 +254,7 @@ class Pocao(Item):
         super().__init__(False)
 
     def pode_usar(self, pokemon):
-        return pokemon.get_vida_atual() < 0.8 * pokemon.get_vida_maxima()
+        return pokemon.vida_atual < 0.8 * pokemon.vida_maxima
         
     def usar(self, pokemon):
         if self.pode_usar(pokemon):
@@ -251,7 +270,7 @@ class SuperPocao(Item):
         super().__init__(False)
 
     def pode_usar(self, pokemon):
-        return pokemon.get_vida_atual() < 0.5 * pokemon.get_vida_maxima()
+        return pokemon.vida_atual < 0.5 * pokemon.vida_maxima
     
     def usar(self, pokemon):
         if self.pode_usar(pokemon):
@@ -266,14 +285,14 @@ class Antidoto(Item):
         super().__init__(True)
 
     def pode_usar(self, pokemon):
-        for efeito in pokemon.get_status():
+        for efeito in pokemon.status:
             if isinstance(efeito, Envenenado):
                 return True
         return False 
     
     def usar(self, pokemon):
         if self.pode_usar(pokemon):
-            for efeito in pokemon.get_status():
+            for efeito in pokemon.status:
                 if isinstance(efeito, Envenenado):
                     pokemon.remover_status(efeito)
                     break
@@ -287,14 +306,14 @@ class Antiqueimadura(Item):
         super().__init__(True)
 
     def pode_usar(self, pokemon):
-        for efeito in pokemon.get_status():
+        for efeito in pokemon.status:
             if isinstance(efeito, Queimadura):
                 return True
         return False 
     
     def usar(self, pokemon):
         if self.pode_usar(pokemon):
-            for efeito in pokemon.get_status():
+            for efeito in pokemon.status:
                 if isinstance(efeito, Queimadura):
                     pokemon.remover_status(efeito)
                     break
@@ -308,11 +327,11 @@ class CuraTotal(Item):
         super().__init__(True)
 
     def pode_usar(self, pokemon):
-        return len(pokemon.get_status()) > 0
+        return len(pokemon.status) > 0
         
     def usar(self, pokemon):
         if self.pode_usar(pokemon):
-             pokemon.get_status().clear()
+             pokemon.status.clear()
 
 
 class Acao(ABC):
@@ -330,7 +349,8 @@ class AcaoAtq(Acao):
     def __init__ (self, golpe):
         self.__golpe = golpe
 
-    def get_golpe(self):
+    @property
+    def golpe(self):
         return self.__golpe
 
     def executar(self, pokemon):
@@ -343,7 +363,8 @@ class AcaoItem(Acao):
     def __init__ (self, item):
         self.__item = item
 
-    def get_item(self):
+    @property
+    def item(self):
         return self.__item
 
     def executar(self, pokemon):
@@ -357,11 +378,15 @@ class Treinador():
         self.__pokemons = pokemons[:6]
         self.__itens = [Pocao(), Pocao(), SuperPocao(), Antidoto(), Antiqueimadura(), CuraTotal()]
 
-    def get_nome(self):
+    @property
+    def nome(self):
         return self.__nome
-        
-    def get_pokemons(self):
+
+    @property      
+    def pokemons(self):
         return self.__pokemons
-        
-    def get_itens(self):
+
+    @property       
+    def itens(self):
         return self.__itens
+    
