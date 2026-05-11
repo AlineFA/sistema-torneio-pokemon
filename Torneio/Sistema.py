@@ -532,6 +532,6 @@ class Batalha():
 
     @property
     def vencedor(self):
-        if self.__treinador1.tem_pokemon_disponível():
+        if self.__treinador1.tem_pokemon_disponivel():
             return self.__treinador1
         return self.__treinador2
