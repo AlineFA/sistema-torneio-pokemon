@@ -187,8 +187,12 @@ class Pokemon:
     def adicionar_status (self, status):
         """Adiciona um status, mas somente se o Pokémon não estiver com o mesmo.""" 
         if status not in self.__status:
-                self.__status.append(status)
+            self.__status.append(status)
 
+    def aplicar_status(self):
+        for efeito in self.__status:
+            efeito.aplicar(self)
+            
     def remover_status (self, status):
         """Remove um status, mas somente se ele estiver aplicado ao Pokémon.""" 
         if status in self.__status:
