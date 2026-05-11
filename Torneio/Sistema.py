@@ -535,3 +535,23 @@ class Batalha():
         if self.__treinador1.tem_pokemon_disponivel():
             return self.__treinador1
         return self.__treinador2
+    
+
+class Torneio:
+    def __init__ (self, treinadores):
+        self.__treinadores = treinadores
+        self.__historico = []
+        self.__vencedor = None
+
+    @property
+    def treinadores(self):
+        return self.__treinadores
+    
+    @property
+    def historico(self):
+        return self.__historico
+    
+    @property
+    def vencedor(self):
+        return self.__vencedor
+    
