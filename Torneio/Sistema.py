@@ -187,6 +187,27 @@ class Antidoto(Item):
                     break
 
 
+class Antiqueimadura(Item): 
+    """Subclasse de Item que permite que o Pokémon use a 
+    Anti Queimadura caso esteja sob o efeito de Queimadura"""
+
+    def __init__(self):
+        super().__init__(True)
+
+    def pode_usar(self, pokemon):
+        for efeito in pokemon.get_status():
+            if isinstance(efeito, Queimadura):
+                return True
+        return False 
+    
+    def usar(self, pokemon):
+        if self.pode_usar(pokemon):
+            for efeito in pokemon.get_status():
+                if isinstance(efeito, Queimadura):
+                    pokemon.remover_status(efeito)
+                    break
+
+
 class Pokemon:
     """Representa um Pokémon no sistema."""
 
