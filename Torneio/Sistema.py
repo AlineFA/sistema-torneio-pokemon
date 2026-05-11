@@ -208,6 +208,21 @@ class Antiqueimadura(Item):
                     break
 
 
+class CuraTotal(Item):
+    """Subclasse de Item que verifica se o Pokémon está sob o
+     efeito de algum status e caso sim, remove todos eles"""
+
+    def __init__(self):
+        super().__init__(True)
+
+    def pode_usar(self, pokemon):
+        return len(pokemon.get_status()) > 0
+        
+    def usar(self, pokemon):
+        if self.pode_usar(pokemon):
+             pokemon.get_status().clear()
+                
+
 class Pokemon:
     """Representa um Pokémon no sistema."""
 
