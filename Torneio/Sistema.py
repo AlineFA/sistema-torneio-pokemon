@@ -73,6 +73,35 @@ class Envenenado(EfeitoStatus):
         pokemon.receber_dano(5)
 
 
+class Golpe():
+
+    def __init__ (self, nome, tipo, poder, acucaria, efeito, chance):
+        self.__nome = nome[:15]
+        self.__tipo = tipo
+        self.__poder = min(int(poder), 250)
+        self.__acuracia = min(float(acuraria), 1)
+        self.__efeito = efeito
+        self.__chance = min(float(chance), 1)
+
+    def get_nome(self):
+        return self.__nome
+    
+    def get_tipo(self):
+        return self.__tipo
+    
+    def get_poder(self):
+        return self.__poder
+    
+    def get_acuracia(self):
+        return self.__acuracia
+    
+    def get_efeito(self):
+        return self.__efeito
+    
+    def get_chance(self):
+        return self.__chance
+
+
 class Pokemon:
     """Representa um Pokémon no sistema."""
 
