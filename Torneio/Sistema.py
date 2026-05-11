@@ -516,18 +516,36 @@ class Batalha():
             acao2 = treinador_segundo.escolher_acao(segundo)
 
             if isinstance(acao1, AcaoAtq):
-                dano = acao1.golpe.calcular_dano(segundo, primeiro)
-                segundo.receber_dano(dano)
-                self.registrar(f"{primeiro.nome} usou {acao1.golpe.nome} e causou {dano} de dano!")
+                if random.random() <= acao1.golpe.acuracia: 
+                    dano = acao1.golpe.calcular_dano(segundo, primeiro)
+                    segundo.receber_dano(dano)
+                    self.registrar(f"{primeiro.nome} usou {acao1.golpe.nome} e causou {dano} de dano!")
+                    if acao1.golpe.efeito is not None:
+                        if random.random() <= acao1.golpe.chance:
+                            segundo.adicionar_status(acao1.golpe.efeito)
+                    if segundo.esta_desmaiado():
+                        segundo = treinador_segundo.escolher_pokemon()
+                        continue     
+                else:
+                    self.registrar(f"{primeiro.nome} errou o golpe!")
             elif isinstance(acao1, AcaoItem):
                 acao1.item.usar(primeiro)
                 self.registrar(f"{primeiro.nome} usou um item!")
 
 
             if isinstance(acao2, AcaoAtq):
-                dano = acao2.golpe.calcular_dano(primeiro, segundo)
-                primeiro.receber_dano(dano)
-                self.registrar(f"{segundo.nome} usou {acao2.golpe.nome} e causou {dano} de dano!")
+                if random.random() <= acao2.golpe.acuracia: 
+                    dano = acao2.golpe.calcular_dano(primeiro, segundo)
+                    primeiro.receber_dano(dano)
+                    self.registrar(f"{segundo.nome} usou {acao2.golpe.nome} e causou {dano} de dano!")
+                    if acao2.golpe.efeito is not None:
+                        if random.random() <= acao2.golpe.chance:
+                            primeiro.adicionar_status(acao2.golpe.efeito)
+                    if primeiro.esta_desmaiado():
+                        primeiro = treinador_primeiro.escolher_pokemon()
+                        continue     
+                else:
+                    self.registrar(f"{segundo.nome} errou o golpe!")
             elif isinstance(acao2, AcaoItem):
                 acao2.item.usar(segundo)
                 self.registrar(f"{segundo.nome} usou um item!")
