@@ -553,6 +553,8 @@ class Batalha():
             return self.__treinador1
         return self.__treinador2
     
+    
+# ==================== TORNEIO ====================
 
 class Torneio:
     """Representa um torneio entre treinadores, gerenciando as
