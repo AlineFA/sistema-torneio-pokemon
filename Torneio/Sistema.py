@@ -448,6 +448,9 @@ class Treinador():
                 if itens_disponiveis:
                     item = random.choice(itens_disponiveis)
                     return AcaoItem(item)
+                else:
+                    golpe = random.choice(pokemon.golpes)
+                    return AcaoAtq(golpe)
 
 
 # ==================== BATALHA ====================
