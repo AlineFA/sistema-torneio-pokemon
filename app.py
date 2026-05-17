@@ -95,12 +95,80 @@ with open(arquivo_entrada) as arq:
                         erros.append(f"Golpe '{nome_golpe}': poder inválido — ignorado.")
                                     
                 
-        
-
-                
-
         elif comando == "add_pokemon":
-            pass
+
+            args = partes[1].strip()
+            info = args.split(",")
+            nome_pokemon = info[0].strip()
+            tipo_pokemon = info[1].strip()
+            hp_pokemon = info[2].strip()
+            ataque_pokemon = info[3].strip()
+            defesa_pokemon = info[4].strip()
+            velocidade_pokemon = info[5].strip()
+            golpes_str = info[6].strip()
+            golpes_str = golpes_str.strip("[]")
+            lista_golpes = golpes_str.split(";")
+
+            if nome_pokemon in pokemons:
+                erros.append(f"{nome_pokemon} já exite - ignorado")
+            else:
+                if tipo_pokemon not in tipos:
+                    erros.append(f"{tipo_pokemon} não existe - ignorado")
+                else:
+                    try:
+                        hp = int(hp_pokemon)
+                        ataque = int(ataque_pokemon)
+                        defesa = int(defesa_pokemon)
+                        velocidade = int(velocidade_pokemon)
+                        
+                        valido = True
+
+                        if hp > 255:
+                            erros.append(f"hp maior que o limite de 255 - redefinida para 255")
+
+                        if hp <= 0:
+                            erros.append("hp inválido - ignorado")
+                            valido = False
+
+                        if ataque <= 0:
+                            erros.append("ataque menor ou igual a 0 - ignorado")
+                            valido = False
+
+                        if ataque > 255:
+                            erros.append("ataque ultrapassou o limite de 255 - valor redefinido para 255")
+
+                        if defesa <= 0:
+                            erros.append("defesa menor ou igual a 0 - ignorada")
+                            valido = False
+
+                        if defesa > 255:
+                            erros.append("defesa ultrapassou o limite de 255 - valor redefinido para 255")
+
+                        if velocidade > 255:
+                            erros.append("velocidade ultrapassou o limite de 255 - valor redefinido para 255")
+                        
+                        if velocidade <=0:
+                            erros.append(f"velocidade menor ou igual a 0 - ignorada")
+                            valido = False
+
+                        if valido:
+                            pokemons[nome_pokemon] = Pokemon(nome_pokemon, tipos[tipo_pokemon], hp, ataque, defesa, velocidade)
+                            for nome_golpe in lista_golpes:
+                                nome_golpe = nome_golpe.strip()
+                                if nome_golpe not in golpes:
+                                    erros.append(f"Golpe '{nome_golpe}' não existe - ignorado")
+                                else:
+                                    pokemons[nome_pokemon].adicionar_golpe(golpes[nome_golpe])
+
+                            if not pokemons[nome_pokemon].golpes:
+                                erros.append(f"Pokemon '{nome_pokemon}': nenhum golpe válido — ignorado.")
+                                del pokemons[nome_pokemon]
+                                                                
+                    except ValueError:
+                        erros.append(f"Pokemon '{nome_pokemon}': stat inválido — ignorado.")
+
+
+
         elif comando == "add_trainer":
             pass
         elif comando == "add_tournament":
