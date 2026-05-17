@@ -492,10 +492,10 @@ class Batalha():
         self.registrar(f"Batalha: {self.__treinador1.nome} vs {self.__treinador2.nome}")
         pokemon1 = self.__treinador1.escolher_pokemon()
         pokemon2 = self.__treinador2.escolher_pokemon()
-        turno = 0
+        turno = 0 # ← perguntar se pode 
 
         while self.__treinador1.tem_pokemon_disponivel() and self.__treinador2.tem_pokemon_disponivel():
-            turno += 1 # ← adiciona contagem dos turnos
+            turno += 1 # ← adiciona contagem dos turnos 
             if turno > 200: # ← limita os turnos
                 break
             if pokemon1 is None or pokemon2 is None:  

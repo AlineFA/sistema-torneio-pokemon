@@ -3,6 +3,16 @@ import csv
 from Torneio.Sistema import *
 from Torneio.Erros import *
 
+"""
+→ Arquivo principal do sistema.
+
+→ Responsável por:
+✔︎ ler os arquivos de entrada
+✔︎ criar os objetos do sistema
+✔︎ executar o torneio
+✔︎ gerar os arquivos de saída
+"""
+
 arquivo_entrada = sys.argv[1]
 
 erros = []
@@ -17,7 +27,7 @@ torneio_treinadores = []
 with open(arquivo_entrada) as arq:
 
     for linha in arq:
-        partes = linha.split(":",1) #separa só no primeiro : e para
+        partes = linha.split(":",1)
         comando = partes[0].strip()
     
         if comando == "add_type":
