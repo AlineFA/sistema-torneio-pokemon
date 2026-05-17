@@ -495,8 +495,8 @@ class Batalha():
         turno = 0
 
         while self.__treinador1.tem_pokemon_disponivel() and self.__treinador2.tem_pokemon_disponivel():
-            
-            if turno > 200: 
+            turno += 1 # ← adiciona contagem dos turnos
+            if turno > 200: # ← limita os turnos
                 break
             if pokemon1 is None or pokemon2 is None:  
                 break
