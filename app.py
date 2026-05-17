@@ -19,6 +19,7 @@ with open(arquivo_entrada) as arq:
     for linha in arq:
         partes = linha.split(":",1) #separa só no primeiro : e para
         comando = partes[0].strip()
+        
 
         if comando == "add_type":
             args = partes[1].strip()
@@ -210,7 +211,26 @@ with open(arquivo_entrada) as arq:
                             erros.append(f"Item '{nome_item}' não implementado - ignorado")
 
 
-
-
         elif comando == "add_tournament":
-            pass
+            args = partes[1].strip("[]")
+            info = args.split(";")
+            torneio_treinadores = info
+
+treinadores_validos = []
+nomes_usados = []
+for nome in torneio_treinadores:
+    nome = nome.strip()
+    if nome in nomes_usados:
+        erros.append(f"Treinador '{nome}' duplicado no torneio - ignorado")
+    elif nome not in treinadores:
+        erros.append(f"Treinador '{nome}' não cadastrado - ignorado")
+    else:
+        nomes_usados.append(nome)
+        treinadores_validos.append(treinadores[nome])
+
+if len(treinadores_validos) < 2:
+    erros.append("Torneio precisa de pelo menos 2 treinadores válidos!")
+else:
+    torneio = Torneio(treinadores_validos)
+    torneio.executar()
+
