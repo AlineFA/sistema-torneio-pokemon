@@ -545,6 +545,8 @@ class Batalha():
                             primeiro.adicionar_status(acao2.golpe.efeito)
                     if primeiro.esta_desmaiado():
                         primeiro = treinador_primeiro.escolher_pokemon()
+                        if primeiro is None:
+                            break
                         continue     
                 else:
                     self.registrar(f"{segundo.nome} errou o golpe!")
