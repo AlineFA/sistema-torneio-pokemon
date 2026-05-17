@@ -19,8 +19,7 @@ with open(arquivo_entrada) as arq:
     for linha in arq:
         partes = linha.split(":",1) #separa só no primeiro : e para
         comando = partes[0].strip()
-        
-
+    
         if comando == "add_type":
             args = partes[1].strip()
             info = args.split(",", 1)
@@ -70,7 +69,7 @@ with open(arquivo_entrada) as arq:
                 efeito_objeto = None
 
             if nome_golpe in golpes:
-                erros.append(f"Golpe '{nome_golpe}' já cadastrado — ignorado.") #nao pode ter dois golpes iguais?
+                erros.append(f"Golpe '{nome_golpe}' já cadastrado — ignorado.") 
             else:
                 if tipo_golpe not in tipos:
                     erros.append(f"Tipo '{tipo_golpe}' não existe — ignorado.")
@@ -177,7 +176,7 @@ with open(arquivo_entrada) as arq:
             resto = args[pos:]
             pos2 = resto.find("[(")
             lista_pokemons = resto[:pos2].strip()
-            lista_pokemons = lista_pokemons.strip("[]")
+            lista_pokemons = lista_pokemons.strip("[], ")
             lista_pokemons = lista_pokemons.split(";")
             lista_itens = resto[pos2:].strip()
 
@@ -213,8 +212,9 @@ with open(arquivo_entrada) as arq:
 
         elif comando == "add_tournament":
             args = partes[1].strip("[]")
-            info = args.split(";")
-            torneio_treinadores = info
+            args = args.strip("[]")
+            torneio_treinadores = [nome.strip() for nome in args.split(";")]
+
 
 treinadores_validos = []
 nomes_usados = []
@@ -233,4 +233,14 @@ if len(treinadores_validos) < 2:
 else:
     torneio = Torneio(treinadores_validos)
     torneio.executar()
+
+    with open("outputs/Torneio.out", "w") as saida:
+        for batalha in torneio.historico:
+            for mensagem in batalha.registro:
+                saida.write(mensagem + "\n")
+        saida.write(f"\nVencedor do torneio: {torneio.vencedor.nome}\n")
+
+    with open("outputs/Torneio.err", "w") as erros_saida:
+        for erro in erros:
+            erros_saida.write(erro + "\n")
 
