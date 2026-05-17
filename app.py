@@ -170,6 +170,47 @@ with open(arquivo_entrada) as arq:
 
 
         elif comando == "add_trainer":
-            pass
+            args = partes[1].strip()
+            pos = args.find("[")
+            nome_treinador = args[:pos].strip().strip(",")
+            resto = args[pos:]
+            pos2 = resto.find("[(")
+            lista_pokemons = resto[:pos2].strip()
+            lista_pokemons = lista_pokemons.strip("[]")
+            lista_pokemons = lista_pokemons.split(";")
+            lista_itens = resto[pos2:].strip()
+
+            if nome_treinador in treinadores:
+                erros.append(f"Treinador já adicionado - ignorado")
+            else:
+                if len(nome_treinador) > 20:
+                    erros.append(f"Nome do treinador com mais de 20 caracteres - redefinido para 20 caracteres cortando os demais")
+        
+                pokemons_validos =[]
+                for nome_pokemon in lista_pokemons:
+                    nome_pokemon = nome_pokemon.strip()
+                    if nome_pokemon not in pokemons:
+                        erros.append(f"Pokemon '{nome_pokemon}' não existe - ignorado")
+                    else:
+                        pokemons_validos.append(pokemons[nome_pokemon])
+                                
+                if not pokemons_validos:
+                    erros.append("O treinador não possui pokémons válidos - treinador ignorado")
+                else:
+                    treinadores[nome_treinador] = Treinador(nome_treinador, pokemons_validos)
+
+                    lista_itens = lista_itens.strip("[]")
+                    lista_itens = lista_itens.split(";")
+                    
+                    itens_suportados = ["Potion", "SuperPotion", "HyperPotion", "FullRestore", "Antidote", "BurnHeal", "FullHeal", "ParalyzeHeal"]
+                    
+                    for item in lista_itens:
+                        nome_item = item.strip().strip("()").split(":")[0].strip()
+                        if nome_item not in itens_suportados:
+                            erros.append(f"Item '{nome_item}' não implementado - ignorado")
+
+
+
+
         elif comando == "add_tournament":
             pass
