@@ -493,6 +493,8 @@ class Batalha():
         pokemon1 = self.__treinador1.escolher_pokemon()
         pokemon2 = self.__treinador2.escolher_pokemon()
         while self.__treinador1.tem_pokemon_disponivel() and self.__treinador2.tem_pokemon_disponivel():
+            if pokemon1 is None or pokemon2 is None:  # ← adiciona aqui
+                break
             if pokemon1.velocidade > pokemon2.velocidade:
                 primeiro = pokemon1
                 segundo = pokemon2
@@ -554,13 +556,16 @@ class Batalha():
                 acao2.item.usar(segundo)
                 self.registrar(f"{segundo.nome} usou um item!")
 
-
             if segundo.esta_desmaiado():
                 self.registrar(f"{segundo.nome} desmaiou!")
                 segundo = treinador_segundo.escolher_pokemon()
+                if segundo is None:
+                    break
             if primeiro.esta_desmaiado():
                 self.registrar(f"{primeiro.nome} desmaiou!")
                 primeiro = treinador_primeiro.escolher_pokemon()
+                if primeiro is None:
+                    break
 
         if self.__treinador1.tem_pokemon_disponivel():
             self.registrar(f"Vencedor: {self.__treinador1.nome}")
