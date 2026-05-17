@@ -346,7 +346,7 @@ class CuraTotal(Item):
         
     def usar(self, pokemon):
         if self.pode_usar(pokemon):
-             pokemon.limpar_status() #nao acessa a lista diretamente
+             pokemon.limpar_status() 
 
 
 # ==================== ACAO ====================
@@ -493,7 +493,7 @@ class Batalha():
         pokemon1 = self.__treinador1.escolher_pokemon()
         pokemon2 = self.__treinador2.escolher_pokemon()
         while self.__treinador1.tem_pokemon_disponivel() and self.__treinador2.tem_pokemon_disponivel():
-            if pokemon1 is None or pokemon2 is None:  # ← adiciona aqui
+            if pokemon1 is None or pokemon2 is None:  
                 break
             if pokemon1.velocidade > pokemon2.velocidade:
                 primeiro = pokemon1
