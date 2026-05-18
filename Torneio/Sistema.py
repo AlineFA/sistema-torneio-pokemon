@@ -550,9 +550,13 @@ class Batalha():
             if isinstance(acao1, AcaoAtq):
                 if random.random() <= acao1.golpe.acuracia: 
                     dano = acao1.golpe.calcular_dano(segundo, primeiro)
-                    segundo.receber_dano(dano)
-                    self.registrar(f"{primeiro.nome} usou {acao1.golpe.nome} e causou {dano} de dano!")
 
+                    if dano > 0:
+                        segundo.receber_dano(dano)
+                        self.registrar(f"{primeiro.nome} usou {acao1.golpe.nome} e causou {dano} de dano!")
+                    else:
+                        self.registrar(f"{primeiro.nome} usou {acao1.golpe.nome} mas não causou efeito!")
+                    
                     if acao1.golpe.efeito is not None:
                         if random.random() <= acao1.golpe.chance:
                             segundo.adicionar_status(acao1.golpe.efeito)
@@ -581,8 +585,12 @@ class Batalha():
             if isinstance(acao2, AcaoAtq):
                 if random.random() <= acao2.golpe.acuracia: 
                     dano = acao2.golpe.calcular_dano(primeiro, segundo)
-                    primeiro.receber_dano(dano)
-                    self.registrar(f"{segundo.nome} usou {acao2.golpe.nome} e causou {dano} de dano!")
+                    
+                    if dano > 0:
+                        primeiro.receber_dano(dano)
+                        self.registrar(f"{segundo.nome} usou {acao2.golpe.nome} e causou {dano} de dano!")
+                    else:
+                        self.registrar(f"{segundo.nome} usou {acao2.golpe.nome} mas não causou efeito!")
                     
                     if acao2.golpe.efeito is not None:
                         if random.random() <= acao2.golpe.chance:
