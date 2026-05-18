@@ -510,7 +510,36 @@ class Batalha():
                 primeiro, segundo = random.choice([(pokemon1, pokemon2), (pokemon2, pokemon1)])
             
             primeiro.aplicar_status()
+            if primeiro.esta_desmaiado():
+                self.registrar(f"{primeiro.nome} desmaiou!")
+
+                if primeiro == pokemon1:
+                    pokemon1 = self.__treinador1.escolher_pokemon()
+                    primeiro = pokemon1
+                else:
+                    pokemon2 = self.__treinador2.escolher_pokemon()
+                    primeiro = pokemon2
+
+                if primeiro is None:
+                    break
+                    
+                continue    
+
             segundo.aplicar_status()
+            if segundo.esta_desmaiado():
+                self.registrar(f"{segundo.nome} desmaiou!")
+
+                if segundo == pokemon1:
+                    pokemon1 = self.__treinador1.escolher_pokemon()
+                    segundo = pokemon1
+                else:
+                    pokemon2 = self.__treinador2.escolher_pokemon()
+                    segundo = pokemon2
+
+                if segundo is None:
+                    break
+                    
+                continue    
 
             if primeiro == pokemon1:
                 treinador_primeiro = self.__treinador1
@@ -520,57 +549,66 @@ class Batalha():
                 treinador_segundo = self.__treinador1
 
             acao1 = treinador_primeiro.escolher_acao(primeiro)
-            acao2 = treinador_segundo.escolher_acao(segundo)
 
             if isinstance(acao1, AcaoAtq):
                 if random.random() <= acao1.golpe.acuracia: 
                     dano = acao1.golpe.calcular_dano(segundo, primeiro)
                     segundo.receber_dano(dano)
                     self.registrar(f"{primeiro.nome} usou {acao1.golpe.nome} e causou {dano} de dano!")
+
                     if acao1.golpe.efeito is not None:
                         if random.random() <= acao1.golpe.chance:
                             segundo.adicionar_status(acao1.golpe.efeito)
+
                     if segundo.esta_desmaiado():
-                        segundo = treinador_segundo.escolher_pokemon()
+                        self.registrar(f"{segundo.nome} desmaiou!")
+                        if segundo == pokemon1:
+                            pokemon1 = self.__treinador1.escolher_pokemon()
+                            segundo = pokemon1
+                        else:
+                            pokemon2 = self.__treinador2.escolher_pokemon()
+                            segundo = pokemon2
+                        
                         if segundo is None:
                             break
                         continue    
                 else:
                     self.registrar(f"{primeiro.nome} errou o golpe!")
+            
             elif isinstance(acao1, AcaoItem):
                 acao1.item.usar(primeiro)
                 self.registrar(f"{primeiro.nome} usou um item!")
 
+            acao2 = treinador_segundo.escolher_acao(segundo)
 
             if isinstance(acao2, AcaoAtq):
                 if random.random() <= acao2.golpe.acuracia: 
                     dano = acao2.golpe.calcular_dano(primeiro, segundo)
                     primeiro.receber_dano(dano)
                     self.registrar(f"{segundo.nome} usou {acao2.golpe.nome} e causou {dano} de dano!")
+                    
                     if acao2.golpe.efeito is not None:
                         if random.random() <= acao2.golpe.chance:
                             primeiro.adicionar_status(acao2.golpe.efeito)
+                    
                     if primeiro.esta_desmaiado():
-                        primeiro = treinador_primeiro.escolher_pokemon()
+                        self.registrar(f"{primeiro.nome} desmaiou!")
+
+                        if primeiro == pokemon1:
+                            pokemon1 = self.__treinador1.escolher_pokemon()
+                            primeiro = pokemon1
+                        else:
+                            pokemon2 = self.__treinador2.escolher_pokemon()
+                            primeiro = pokemon2
+
                         if primeiro is None:
                             break
-                        continue     
                 else:
                     self.registrar(f"{segundo.nome} errou o golpe!")
+
             elif isinstance(acao2, AcaoItem):
                 acao2.item.usar(segundo)
                 self.registrar(f"{segundo.nome} usou um item!")
-
-            if segundo.esta_desmaiado():
-                self.registrar(f"{segundo.nome} desmaiou!")
-                segundo = treinador_segundo.escolher_pokemon()
-                if segundo is None:
-                    break
-            if primeiro.esta_desmaiado():
-                self.registrar(f"{primeiro.nome} desmaiou!")
-                primeiro = treinador_primeiro.escolher_pokemon()
-                if primeiro is None:
-                    break
 
         if self.__treinador1.tem_pokemon_disponivel():
             self.registrar(f"Vencedor: {self.__treinador1.nome}")
@@ -629,7 +667,4 @@ class Torneio:
             self.__treinadores.remove(perdedor)
         self.__vencedor = self.__treinadores [0]
         
-            
-
-
-    
+        

@@ -16,7 +16,7 @@ from Torneio.Erros import *
 arquivo_entrada = sys.argv[1]
 
 erros = []
-log = [] 
+log = [] #tirar
 
 tipos = {}
 golpes = {} 
