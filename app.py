@@ -221,7 +221,7 @@ with open(arquivo_entrada) as arq:
 
 
         elif comando == "add_tournament":
-            args = partes[1].strip("[]")
+            args = partes[1].strip()
             args = args.strip("[]")
             torneio_treinadores = [nome.strip() for nome in args.split(";")]
 
