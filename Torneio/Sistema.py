@@ -462,6 +462,9 @@ class Treinador():
                 else:
                     golpe = random.choice(pokemon.golpes)
                     return AcaoAtq(golpe)
+                
+    def __str__(self):
+        return f"Treinador: {self.__nome} | Pokémons: {[pokemon.nome for pokemon in self.__pokemons]}"
 
 
 # ==================== BATALHA ====================
@@ -639,6 +642,8 @@ class Batalha():
             return self.__treinador1
         return self.__treinador2
     
+    def __str__(self):
+        return f"Batalha: {self.__treinador1.nome} vs {self.__treinador2.nome}"
     
 # ==================== TORNEIO ====================
 
@@ -683,4 +688,5 @@ class Torneio:
             self.__treinadores.remove(perdedor)
         self.__vencedor = self.__treinadores [0]
         
-        
+    def __str__(self):
+        return f"Torneio com {len(self.__treinadores)} treinadores | Vencedor: {self.__vencedor.nome if self.__vencedor else 'Ainda não definido'}"
