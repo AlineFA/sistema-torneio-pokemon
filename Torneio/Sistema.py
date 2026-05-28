@@ -502,10 +502,10 @@ class Batalha():
             
             if pokemon1 is None or pokemon2 is None:  
                 break
-            if pokemon1.velocidade > pokemon2.velocidade:
+            if pokemon2 < pokemon1:
                 primeiro = pokemon1
                 segundo = pokemon2
-            elif pokemon2.velocidade > pokemon1.velocidade:
+            elif pokemon1 < pokemon2:
                 primeiro = pokemon2
                 segundo = pokemon1
             else:
