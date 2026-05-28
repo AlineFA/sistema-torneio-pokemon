@@ -237,6 +237,11 @@ class Pokemon:
     def __str__(self):
         return f"{self.__nome} | Tipo: {self.__tipo} | Vida Máxima: {self.__vida_max} | Vida atual {self.__vida_atual}"
 
+    def __eq__(self,other):
+        return self.__nome == other.nome
+    
+    def __lt__ (self,other):
+        return self.__velocidade < other.velocidade
 
 # ==================== ITEM ====================
 
