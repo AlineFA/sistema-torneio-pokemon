@@ -31,6 +31,8 @@ class Tipo:
     
         return 1
 
+    def __eq__(self, other):
+        return self.__nome == other.nome
 
     def __str__(self):
         return self.__nome
@@ -128,6 +130,8 @@ class Golpe():
     def __str__(self):
         return f"Nome: {self.__nome} | Tipo: {self.__tipo} | Poder: {self.__poder} | Acuracia: {self.__acuracia} | Efeito: {self.__efeito} | Chance: {self.__chance}"
 
+    def __eq__ (self, other):
+        return self.__nome == other.nome
 
 # ==================== POKEMON ====================
                 
