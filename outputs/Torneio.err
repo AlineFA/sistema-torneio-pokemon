@@ -22,12 +22,32 @@ Golpe 'TripleArrow': acurácia > 1 — reduzida para 1.
 Golpe 'InfernalParade': acurácia > 1 — reduzida para 1.
 Golpe 'HydroPump' já cadastrado — ignorado.
 Golpe 'Lick': efeito 'Paralysis' não implementado.
+Golpe 'HammerArm' já cadastrado — ignorado.
 Golpe 'Thunder' já cadastrado — ignorado.
 Golpe 'CollisionCourse': acurácia > 1 — reduzida para 1.
+Golpe 'Psychic' já cadastrado — ignorado.
 Golpe 'ElectroDrift' já cadastrado — ignorado.
 Golpe 'ParabolicCharge': acurácia > 1 — reduzida para 1.
 Golpe 'FlareBlitz': acurácia > 1 — reduzida para 1.
-Golpe 'Tackle' não existe - ignorado
-Golpe 'Tackle' não existe - ignorado
-Treinador 'N' não cadastrado - ignorado
+Golpe 'LeafStorm' não existe - ignorado
+Eelektross já exite - ignorado
+Garbodor já exite - ignorado
+Golpe 'FreezeDry' não existe - ignorado
+Golpe 'Smog' não existe - ignorado
+Zekrom já exite - ignorado
+Golpe 'FreezeDry' não existe - ignorado
+Chandelure já exite - ignorado
+Delphox já exite - ignorado
+hp maior que o limite de 255 - redefinida para 255
+ataque ultrapassou o limite de 255 - valor redefinido para 255
+defesa ultrapassou o limite de 255 - valor redefinido para 255
+velocidade ultrapassou o limite de 255 - valor redefinido para 255
+Golpe 'IronHead' não existe - ignorado
+Golpe 'SkyAttack' não existe - ignorado
+Golpe 'FlyingPress' não existe - ignorado
+Golpe 'BrickBreak' não existe - ignorado
+Pokemon 'Hawlucha': nenhum golpe válido — ignorado.
+Greninja já exite - ignorado
+Pokemon 'Hawlucha' não existe - ignorado
 Treinador 'Akari' duplicado no torneio - ignorado
+Treinador 'N' duplicado no torneio - ignorado
