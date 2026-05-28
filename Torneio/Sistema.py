@@ -379,8 +379,8 @@ class AcaoAtq(Acao):
     def golpe(self):
         return self.__golpe
 
-    def executar(self, pokemon):
-        pass
+    def executar(self, pokemon_atacante, pokemon_alvo):
+        return self.__golpe.calcular_dano(pokemon_alvo, pokemon_atacante)
 
 
 class AcaoItem(Acao):
@@ -394,7 +394,7 @@ class AcaoItem(Acao):
         return self.__item
 
     def executar(self, pokemon):
-        pass
+        self.__item.usar(pokemon)
 
 
 # ==================== TREINADOR ====================
@@ -558,7 +558,7 @@ class Batalha():
 
             if isinstance(acao1, AcaoAtq):
                 if random.random() <= acao1.golpe.acuracia: 
-                    dano = acao1.golpe.calcular_dano(segundo, primeiro)
+                    dano = acao1.executar(segundo, primeiro)
 
                     if dano > 0:
                         segundo.receber_dano(dano)
@@ -593,7 +593,7 @@ class Batalha():
 
             if isinstance(acao2, AcaoAtq):
                 if random.random() <= acao2.golpe.acuracia: 
-                    dano = acao2.golpe.calcular_dano(primeiro, segundo)
+                    dano = acao2.executar(primeiro, segundo)
                     
                     if dano > 0:
                         primeiro.receber_dano(dano)
