@@ -37,7 +37,10 @@ with open(arquivo_entrada) as arq:
             caminho_csv = info[1].strip()
             
             if nome_tipo in tipos:
-                erros.append(f"Tipo '{nome_tipo}' já cadastrado — ignorado.")
+                try:
+                    raise ErroElementoDuplicado (f"Tipo '{nome_tipo}' já cadastrado — ignorado.")
+                except ErroElementoDuplicado as e:
+                    erros.append (str(e))
             else:
                 with open(caminho_csv) as arq_csv:
                     leitor = csv.DictReader(arq_csv)
@@ -75,34 +78,57 @@ with open(arquivo_entrada) as arq:
             elif efeito_golpe is None:
                 efeito_objeto = None
             else:
-                erros.append(f"Golpe '{nome_golpe}': efeito '{efeito_golpe}' não implementado.")
+                try:
+                    raise ErroEntradaInvalida(f"Golpe '{nome_golpe}': efeito '{efeito_golpe}' não implementado.")
+                except ErroEntradaInvalida as e:
+                    erros.append(str(e))
                 efeito_objeto = None
 
             if nome_golpe in golpes:
-                erros.append(f"Golpe '{nome_golpe}' já cadastrado — ignorado.") 
+                try:
+                    raise ErroElementoDuplicado(f"Golpe '{nome_golpe}' já cadastrado — ignorado.")
+                except ErroElementoDuplicado as e:
+                    erros.append(str(e))
             else:
                 if tipo_golpe not in tipos:
-                    erros.append(f"Tipo '{tipo_golpe}' não existe — ignorado.")
+                    try:
+                        raise ErroEntradaInvalida(f"Tipo '{tipo_golpe}' não existe — ignorado.")
+                    except ErroEntradaInvalida as e:
+                        erros.append(str(e))
                 else:
                     try:
                         poder = int(poder_golpe)
                         if poder <= 0:
-                            erros.append(f"{poder_golpe} é menor que 0 - ignorado")
+                            try:
+                                raise ErroValorInvalido(f"{poder_golpe} é menor que 0 - ignorado")
+                            except ErroValorInvalido as e:
+                                erros.append(str(e))
                         else:
                             if poder > 250:
-                                erros.append(f"{poder_golpe} é maior que o limite de 250 - valor redefinido para 250")
-        
+                                try:
+                                    raise ErroValorInvalido(f"{poder_golpe} é maior que o limite de 250 - valor redefinido para 250")
+                                except ErroValorInvalido as e:
+                                    erros.append(str(e))
+
                             try:
                                 acuracia = float(acuracia_golpe)
                                 if acuracia > 1:
-                                    erros.append(f"Golpe '{nome_golpe}': acurácia > 1 — reduzida para 1.")
+                                    try:
+                                        raise ErroValorInvalido(f"Golpe '{nome_golpe}': acurácia > 1 — reduzida para 1.")
+                                    except ErroValorInvalido as e:
+                                        erros.append(str(e))
                                 
                                 golpes[nome_golpe] = Golpe(nome_golpe, tipos[tipo_golpe], poder, acuracia, efeito_objeto, float(chance_efeito))
                             except ValueError:
-                                erros.append(f"Golpe '{nome_golpe}': acurácia inválida — ignorado.")
-                            
+                                try:
+                                    raise ErroEntradaInvalida(f"Golpe '{nome_golpe}': acurácia inválida — ignorado.")
+                                except ErroEntradaInvalida as e:
+                                    erros.append(str(e))
                     except ValueError:
-                        erros.append(f"Golpe '{nome_golpe}': poder inválido — ignorado.")
+                        try:
+                            raise ErroEntradaInvalida(f"Golpe '{nome_golpe}': poder inválido — ignorado.")
+                        except ErroEntradaInvalida as e:
+                            erros.append(str(e))
                                     
                 
         elif comando == "add_pokemon":
@@ -120,10 +146,16 @@ with open(arquivo_entrada) as arq:
             lista_golpes = golpes_str.split(";")
 
             if nome_pokemon in pokemons:
-                erros.append(f"{nome_pokemon} já exite - ignorado")
+                try:
+                    raise ErroElementoDuplicado(f"{nome_pokemon} já existe - ignorado")
+                except ErroElementoDuplicado as e:
+                    erros.append(str(e))
             else:
                 if tipo_pokemon not in tipos:
-                    erros.append(f"{tipo_pokemon} não existe - ignorado")
+                    try:
+                        raise ErroEntradaInvalida(f"{tipo_pokemon} não existe - ignorado")
+                    except ErroEntradaInvalida as e:
+                        erros.append(str(e))
                 else:
                     try:
                         hp = int(hp_pokemon)
@@ -134,31 +166,55 @@ with open(arquivo_entrada) as arq:
                         valido = True
 
                         if hp > 255:
-                            erros.append(f"hp maior que o limite de 255 - redefinida para 255")
+                            try:
+                                raise ErroValorInvalido(f"hp maior que o limite de 255 - redefinida para 255")
+                            except ErroValorInvalido as e:
+                                erros.append(str(e))
 
                         if hp <= 0:
-                            erros.append("hp inválido - ignorado")
+                            try:
+                                raise ErroValorInvalido("hp inválido - ignorado")
+                            except ErroValorInvalido as e:
+                                erros.append(str(e))
                             valido = False
 
                         if ataque <= 0:
-                            erros.append("ataque menor ou igual a 0 - ignorado")
+                            try:
+                                raise ErroValorInvalido("ataque menor ou igual a 0 - ignorado")
+                            except ErroValorInvalido as e:
+                                erros.append(str(e))
                             valido = False
 
                         if ataque > 255:
-                            erros.append("ataque ultrapassou o limite de 255 - valor redefinido para 255")
+                            try:
+                                raise ErroValorInvalido("ataque ultrapassou o limite de 255 - valor redefinido para 255")
+                            except ErroValorInvalido as e:
+                                erros.append(str(e))
 
                         if defesa <= 0:
-                            erros.append("defesa menor ou igual a 0 - ignorada")
+                            try:
+                                raise ErroValorInvalido("defesa menor ou igual a 0 - ignorada")
+                            except ErroValorInvalido as e:
+                                erros.append(str(e))
                             valido = False
 
                         if defesa > 255:
-                            erros.append("defesa ultrapassou o limite de 255 - valor redefinido para 255")
+                            try:
+                                raise ErroValorInvalido("defesa ultrapassou o limite de 255 - valor redefinido para 255")
+                            except ErroValorInvalido as e:
+                                erros.append(str(e))
 
                         if velocidade > 255:
-                            erros.append("velocidade ultrapassou o limite de 255 - valor redefinido para 255")
+                            try:
+                                raise ErroValorInvalido("velocidade ultrapassou o limite de 255 - valor redefinido para 255")
+                            except ErroValorInvalido as e:
+                                erros.append(str(e))
                         
-                        if velocidade <=0:
-                            erros.append(f"velocidade menor ou igual a 0 - ignorada")
+                        if velocidade <= 0:
+                            try:
+                                raise ErroValorInvalido("velocidade menor ou igual a 0 - ignorada")
+                            except ErroValorInvalido as e:
+                                erros.append(str(e))
                             valido = False
 
                         if valido:
@@ -166,17 +222,25 @@ with open(arquivo_entrada) as arq:
                             for nome_golpe in lista_golpes:
                                 nome_golpe = nome_golpe.strip()
                                 if nome_golpe not in golpes:
-                                    erros.append(f"Golpe '{nome_golpe}' não existe - ignorado")
+                                    try:
+                                        raise ErroEntradaInvalida(f"Golpe '{nome_golpe}' não existe - ignorado")
+                                    except ErroEntradaInvalida as e:
+                                        erros.append(str(e))
                                 else:
                                     pokemons[nome_pokemon].adicionar_golpe(golpes[nome_golpe])
 
                             if not pokemons[nome_pokemon].golpes:
-                                erros.append(f"Pokemon '{nome_pokemon}': nenhum golpe válido — ignorado.")
+                                try:
+                                    raise ErroEntradaInvalida(f"Pokemon '{nome_pokemon}': nenhum golpe válido — ignorado.")
+                                except ErroEntradaInvalida as e:
+                                    erros.append(str(e))
                                 del pokemons[nome_pokemon]
                                                                 
                     except ValueError:
-                        erros.append(f"Pokemon '{nome_pokemon}': stat inválido — ignorado.")
-
+                        try:
+                            raise ErroEntradaInvalida(f"Pokemon '{nome_pokemon}': stat inválido — ignorado.")
+                        except ErroEntradaInvalida as e:
+                            erros.append(str(e))
 
 
         elif comando == "add_trainer":
@@ -191,21 +255,34 @@ with open(arquivo_entrada) as arq:
             lista_itens = resto[pos2:].strip()
 
             if nome_treinador in treinadores:
-                erros.append(f"Treinador já adicionado - ignorado")
+                try:
+                    raise ErroElementoDuplicado(f"Treinador '{nome_treinador}' já adicionado - ignorado")
+                except ErroElementoDuplicado as e:
+                    erros.append(str(e))
             else:
                 if len(nome_treinador) > 20:
-                    erros.append(f"Nome do treinador com mais de 20 caracteres - redefinido para 20 caracteres cortando os demais")
+                    try:
+                        raise ErroNomeMuitoLongo(f"Nome do treinador com mais de 20 caracteres - redefinido para 20 caracteres cortando os demais")
+                    except ErroNomeMuitoLongo as e:
+                        erros.append(str(e))
         
                 pokemons_validos =[]
+                
                 for nome_pokemon in lista_pokemons:
                     nome_pokemon = nome_pokemon.strip()
                     if nome_pokemon not in pokemons:
-                        erros.append(f"Pokemon '{nome_pokemon}' não existe - ignorado")
+                        try:
+                            raise ErroEntradaInvalida(f"Pokemon '{nome_pokemon}' não existe - ignorado")
+                        except ErroEntradaInvalida as e:
+                            erros.append(str(e))
                     else:
                         pokemons_validos.append(pokemons[nome_pokemon])
                                 
                 if not pokemons_validos:
-                    erros.append("O treinador não possui pokémons válidos - treinador ignorado")
+                    try:
+                        raise ErroEntradaInvalida("O treinador não possui pokémons válidos - treinador ignorado")
+                    except ErroEntradaInvalida as e:
+                        erros.append(str(e))
                 else:
                     treinadores[nome_treinador] = Treinador(nome_treinador, pokemons_validos)
 
@@ -217,7 +294,10 @@ with open(arquivo_entrada) as arq:
                     for item in lista_itens:
                         nome_item = item.strip().strip("()").split(":")[0].strip()
                         if nome_item not in itens_suportados:
-                            erros.append(f"Item '{nome_item}' não implementado - ignorado")
+                            try:
+                                raise ErroEntradaInvalida(f"Item '{nome_item}' não implementado - ignorado")
+                            except ErroEntradaInvalida as e:
+                                erros.append(str(e))
 
 
         elif comando == "add_tournament":
@@ -231,9 +311,15 @@ nomes_usados = []
 for nome in torneio_treinadores:
     nome = nome.strip()
     if nome in nomes_usados:
-        erros.append(f"Treinador '{nome}' duplicado no torneio - ignorado")
+        try:
+            raise ErroElementoDuplicado(f"Treinador '{nome}' duplicado no torneio - ignorado")
+        except ErroElementoDuplicado as e:
+            erros.append(str(e))
     elif nome not in treinadores:
-        erros.append(f"Treinador '{nome}' não cadastrado - ignorado")
+        try:
+            raise ErroEntradaInvalida(f"Treinador '{nome}' não cadastrado - ignorado")
+        except ErroEntradaInvalida as e:
+            erros.append(str(e))
     else:
         nomes_usados.append(nome)
         treinadores_validos.append(treinadores[nome])

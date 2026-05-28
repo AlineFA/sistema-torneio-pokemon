@@ -8,20 +8,32 @@ class ErroPokemonExcedido(Exception):
     do que o permitido pelo sistema"""
     pass
 
-class ErroTreinadorDuplicado(Exception):
-    """Classe que administra o erro caso um mesmo treinador seja 
-    inserido numa mesma batalha mais de uma vez"""
-    pass
 
 class ErroValorInvalido(Exception):
-    """Classe que administra o erro caso seja inserido um valor 
-    inválido em algum campo, exemplo: vida do pokémon ultrapassar
-    255"""
+    """
+    Classe que administra o erro caso seja inserido um valor 
+    inválido em algum campo. 
+    Exemplo: vida do pokémon ultrapassar 255
+    """
     pass
 
-class ErroTipoDadoInvalido(Exception):
-    """Classe que admnistra o erro caso o dado inserido seja inválido.
-    Exemplo: se o dado precisar ser um inteiro e for inserida uma
-    string"""
+
+class ErroElementoDuplicado(Exception):
+    """
+    Classe que adminsitra o erro caso o elemento já tenha sido cadastrado.
+    Exemplo: golpe já existente
+    """
     pass
 
+
+class ErroEntradaInvalida(Exception):
+    """
+    Erro para entradas inválidas fornecidas ao sistema.
+
+    Exemplos:
+    string em campo numérico
+    tipo inexistente
+    golpe não cadastrado
+    item não implementado
+    """
+    pass
