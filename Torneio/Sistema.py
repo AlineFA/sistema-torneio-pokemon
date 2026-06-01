@@ -453,11 +453,13 @@ class Treinador():
     
             if itens_cura:
                 item = random.choice(itens_cura)
+                self.__itens.remove(item)
                 return AcaoItem(item)
             else:
                 itens_disponiveis = [item for item in self.__itens if item.pode_usar(pokemon)]
                 if itens_disponiveis:
                     item = random.choice(itens_disponiveis)
+                    self.__itens.remove(item)
                     return AcaoItem(item)
                 else:
                     golpe = random.choice(pokemon.golpes)
