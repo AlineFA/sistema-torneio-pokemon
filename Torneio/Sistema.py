@@ -403,10 +403,10 @@ class Treinador():
     """Representa um treinador no sistema, possuindo 
     até 6 Pokémons e itens para uso durante as batalhas."""
 
-    def __init__ (self, nome, pokemons):
+    def __init__ (self, nome, pokemons, itens):
         self.__nome = nome[:20]
         self.__pokemons = pokemons[:6]
-        self.__itens = [Pocao(), Pocao(), SuperPocao(), Antidoto(), Antiqueimadura(), CuraTotal()]
+        self.__itens = itens
 
     @property
     def nome(self):
