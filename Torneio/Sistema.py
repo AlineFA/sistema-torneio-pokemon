@@ -133,7 +133,9 @@ class Golpe():
         return f"Nome: {self.__nome} | Tipo: {self.__tipo} | Poder: {self.__poder} | Acuracia: {self.__acuracia} | Efeito: {self.__efeito} | Chance: {self.__chance}"
 
     def __eq__ (self, other):
-        return self.__nome == other.nome
+        if isinstance(other, Golpe):
+            return self.__nome == other.nome
+        return False
 
 # ==================== POKEMON ====================
                 
@@ -259,11 +261,11 @@ class Pokemon:
 
         return novo
     
-    def resetar(self):
-        """Restaura a vida atual e remove todos os status do Pokémon."""
+    # def resetar(self):
+    #     """Restaura a vida atual e remove todos os status do Pokémon."""
 
-        self.__vida_atual = self.__vida_max
-        self.__status.clear()
+    #     self.__vida_atual = self.__vida_max
+    #     self.__status.clear()
 
     def __str__(self):
         return f"{self.__nome} | Tipo: {self.__tipo} | Vida Máxima: {self.__vida_max} | Vida atual {self.__vida_atual}"
@@ -497,11 +499,11 @@ class Treinador():
                     golpe = random.choice(pokemon.golpes)
                     return AcaoAtq(golpe)
                 
-    def resetar_pokemons(self):
-        """Restaura todos os Pokémons do treinador antes de uma nova batalha."""
+    # def resetar_pokemons(self):
+    #     """Restaura todos os Pokémons do treinador antes de uma nova batalha."""
 
-        for pokemon in self.__pokemons:
-            pokemon.resetar()
+    #     for pokemon in self.__pokemons:
+    #         pokemon.resetar()
                 
     def __str__(self):
         return f"Treinador: {self.__nome} | Pokémons: {[pokemon.nome for pokemon in self.__pokemons]}"
@@ -541,8 +543,8 @@ class Batalha():
         desmaiados até que um dos treinadores não tenha mais Pokémons 
         disponíveis."""
 
-        self.__treinador1.resetar_pokemons()
-        self.__treinador2.resetar_pokemons()
+        # self.__treinador1.resetar_pokemons()
+        # self.__treinador2.resetar_pokemons()
 
         self.registrar(f"Batalha: {self.__treinador1.nome} vs {self.__treinador2.nome}")
         pokemon1 = self.__treinador1.escolher_pokemon()
