@@ -22,32 +22,13 @@ Golpe 'TripleArrow': acurácia > 1 — reduzida para 1.
 Golpe 'InfernalParade': acurácia > 1 — reduzida para 1.
 Golpe 'HydroPump' já cadastrado — ignorado.
 Golpe 'Lick': efeito 'Paralysis' não implementado.
-Golpe 'HammerArm' já cadastrado — ignorado.
 Golpe 'Thunder' já cadastrado — ignorado.
 Golpe 'CollisionCourse': acurácia > 1 — reduzida para 1.
-Golpe 'Psychic' já cadastrado — ignorado.
 Golpe 'ElectroDrift' já cadastrado — ignorado.
 Golpe 'ParabolicCharge': acurácia > 1 — reduzida para 1.
 Golpe 'FlareBlitz': acurácia > 1 — reduzida para 1.
-Golpe 'LeafStorm' não existe - ignorado
-Eelektross já existe - ignorado
-Garbodor já existe - ignorado
-Golpe 'FreezeDry' não existe - ignorado
-Golpe 'Smog' não existe - ignorado
-Zekrom já existe - ignorado
-Golpe 'FreezeDry' não existe - ignorado
-Chandelure já existe - ignorado
-Delphox já existe - ignorado
-hp maior que o limite de 255 - redefinida para 255
-ataque ultrapassou o limite de 255 - valor redefinido para 255
-defesa ultrapassou o limite de 255 - valor redefinido para 255
-velocidade ultrapassou o limite de 255 - valor redefinido para 255
-Golpe 'IronHead' não existe - ignorado
-Golpe 'SkyAttack' não existe - ignorado
-Golpe 'FlyingPress' não existe - ignorado
-Golpe 'BrickBreak' não existe - ignorado
-Pokemon 'Hawlucha': nenhum golpe válido — ignorado.
-Greninja já existe - ignorado
+Golpe 'Tackle' não existe - ignorado
+Golpe 'Tackle' não existe - ignorado
 Item 'FullRestore' não implementado - ignorado
 Item 'FullRestore' não implementado - ignorado
 Item 'ParalyzeHeal' não implementado - ignorado
@@ -62,17 +43,5 @@ Item 'HyperPotion' não implementado - ignorado
 Item 'ParalyzeHeal' não implementado - ignorado
 Item 'FullRestore' não implementado - ignorado
 Item 'HyperPotion' não implementado - ignorado
-Item 'FullRestore' não implementado - ignorado
-Item 'HyperPotion' não implementado - ignorado
-Item 'ParalyzeHeal' não implementado - ignorado
-Item 'ParalyzeHeal' não implementado - ignorado
-Item 'ParalyzeHeal' não implementado - ignorado
-Item 'HyperPotion' não implementado - ignorado
-Item 'FullRestore' não implementado - ignorado
-Pokemon 'Hawlucha' não existe - ignorado
-Item 'HyperPotion' não implementado - ignorado
-Item 'ParalyzeHeal' não implementado - ignorado
-Item 'FullRestore' não implementado - ignorado
-Item 'HyperPotion' não implementado - ignorado
+Treinador 'N' não cadastrado - ignorado
 Treinador 'Akari' duplicado no torneio - ignorado
-Treinador 'N' duplicado no torneio - ignorado

@@ -141,6 +141,11 @@ class Pokemon:
     def __init__(self, nome, tipo, hp, ataque, defesa, velocidade):
         nivel = 50
 
+        self.__hp_base = hp
+        self.__ataque_base = ataque
+        self.__defesa_base = defesa
+        self.__velocidade_base = velocidade
+
         self.__nome = nome[:15]
         self.__tipo = tipo
 
@@ -220,6 +225,7 @@ class Pokemon:
     def aplicar_status(self):
         """Aplica todos os efeitos de status ativos no Pokémon, 
         causando dano ou outros efeitos a cada turno."""
+
         for efeito in self.__status:
             efeito.aplicar(self)
             
@@ -236,7 +242,20 @@ class Pokemon:
         
     def limpar_status(self):
         """Remove todos os efeitos de status do Pokémon."""
+
         self.__status.clear()
+
+    def clonar(self):
+        """Cria e retorna uma cópia do Pokémon, preservando seus atributos
+        e golpes. A cópia é utilizada para que cada treinador possua
+        seus próprios Pokémons independentes."""
+
+        novo = Pokemon(self.__nome, self.__tipo, self.__hp_base, self.__ataque_base, self.__defesa_base, self.__velocidade_base)
+
+        for golpe in self.__golpes:
+            novo.adicionar_golpe(golpe)
+
+        return novo
 
     def __str__(self):
         return f"{self.__nome} | Tipo: {self.__tipo} | Vida Máxima: {self.__vida_max} | Vida atual {self.__vida_atual}"
@@ -405,8 +424,11 @@ class Treinador():
 
     def __init__ (self, nome, pokemons, itens):
         self.__nome = nome[:20]
-        self.__pokemons = pokemons[:6]
+        self.__pokemons = []
         self.__itens = itens
+
+        for pokemon in pokemons[:6]:
+            self.__pokemons.append(pokemon.clonar())
 
     @property
     def nome(self):
@@ -591,7 +613,7 @@ class Batalha():
                     self.registrar(f"{primeiro.nome} errou o golpe!")
             
             elif isinstance(acao1, AcaoItem):
-                acao1.item.usar(primeiro)
+                acao1.executar(primeiro)
                 self.registrar(f"{primeiro.nome} usou um item!")
 
             acao2 = treinador_segundo.escolher_acao(segundo)
@@ -628,7 +650,7 @@ class Batalha():
                     self.registrar(f"{segundo.nome} errou o golpe!")
 
             elif isinstance(acao2, AcaoItem):
-                acao2.item.usar(segundo)
+                acao2.executar(segundo)
                 self.registrar(f"{segundo.nome} usou um item!")
 
         if self.__treinador1.tem_pokemon_disponivel():

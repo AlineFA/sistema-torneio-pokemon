@@ -1,5 +1,5 @@
 class ErroNomeMuitoLongo(Exception):
-    """Classe que administra o sistema caso seja inserido nomes 
+    """Classe que administra o sistema caso seja inserido nome 
     com mais caracteres do que os limites estabelecidos"""
     pass
 
