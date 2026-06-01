@@ -365,7 +365,7 @@ class Acao(ABC):
     realizada durante a batalha."""
 
     @abstractmethod
-    def executar(self):
+    def executar(self, *args):
         pass
 
 
