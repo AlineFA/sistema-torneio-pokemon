@@ -283,22 +283,45 @@ with open(arquivo_entrada) as arq:
                     except ErroEntradaInvalida as e:
                         erros.append(str(e))
                 else:
-                    treinadores[nome_treinador] = Treinador(nome_treinador, pokemons_validos)
-
                     lista_itens = lista_itens.strip("[]")
                     lista_itens = lista_itens.split(";")
                     
-                    itens_suportados = ["Potion", "SuperPotion", "HyperPotion", "FullRestore", "Antidote", "BurnHeal", "FullHeal", "ParalyzeHeal"]
-                    
+                    itens_treinador = []
+
                     for item in lista_itens:
-                        nome_item = item.strip().strip("()").split(":")[0].strip()
-                        if nome_item not in itens_suportados:
+                        item = item.strip().strip("()")
+                        partes_item = item.split(":")
+                        nome_item = partes_item[0].strip()
+                        
+                        if len(partes_item) > 1:
                             try:
-                                raise ErroEntradaInvalida(f"Item '{nome_item}' não implementado - ignorado")
-                            except ErroEntradaInvalida as e:
-                                erros.append(str(e))
+                                quantidade = int(partes_item[1].strip())
+                            except ValueError:
+                                quantidade = 1
+                                erros.append(f"Quantidade inválida para item '{nome_item}' - usando 1")
+                        else:
+                            quantidade = 1
 
+                        if nome_item == "Potion":
+                            for i in range(quantidade):
+                                itens_treinador.append(Pocao())
+                        elif nome_item == "SuperPotion":
+                            for i in range(quantidade):
+                                itens_treinador.append(SuperPocao())
+                        elif nome_item == "Antidote":
+                            for i in range(quantidade):
+                                itens_treinador.append(Antidoto())
+                        elif nome_item == "BurnHeal":
+                            for i in range(quantidade):
+                                itens_treinador.append(Antiqueimadura())
+                        elif nome_item == "FullHeal":
+                            for i in range(quantidade):
+                                itens_treinador.append(CuraTotal())
+                        else:
+                            erros.append(f"Item '{nome_item}' não implementado - ignorado")
 
+                    treinadores[nome_treinador] = Treinador(nome_treinador, pokemons_validos, itens_treinador)
+                
         elif comando == "add_tournament":
             args = partes[1].strip()
             args = args.strip("[]")
