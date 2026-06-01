@@ -14,6 +14,7 @@ from Torneio.Erros import *
 """
 
 arquivo_entrada = sys.argv[1]
+executar_torneio = False
 
 erros = []
 
@@ -327,6 +328,8 @@ with open(arquivo_entrada) as arq:
             args = args.strip("[]")
             torneio_treinadores = [nome.strip() for nome in args.split(";")]
 
+        elif comando == "run_tournament()":
+            executar_torneio = True
 
 treinadores_validos = []
 nomes_usados = []
@@ -346,7 +349,9 @@ for nome in torneio_treinadores:
         nomes_usados.append(nome)
         treinadores_validos.append(treinadores[nome])
 
-if len(treinadores_validos) < 2:
+if not executar_torneio:
+    erros.append("Comando run_tournament() não encontrado - torneio não executado")
+elif len(treinadores_validos) < 2:
     erros.append("Torneio precisa de pelo menos 2 treinadores válidos!")
 else:
     torneio = Torneio(treinadores_validos)
@@ -358,7 +363,7 @@ else:
                 saida.write(mensagem + "\n")
         saida.write(f"\nVencedor do torneio: {torneio.vencedor.nome}\n")
 
-    with open("outputs/Torneio.err", "w") as erros_saida:
-        for erro in erros:
-            erros_saida.write(erro + "\n")
+with open("outputs/Torneio.err", "w") as erros_saida:
+    for erro in erros:
+        erros_saida.write(erro + "\n")
 
