@@ -32,7 +32,9 @@ class Tipo:
         return 1
 
     def __eq__(self, other):
-        return self.__nome == other.nome
+        if isinstance(other, Tipo):
+            return self.__nome == other.nome
+        return False
 
     def __str__(self):
         return self.__nome
@@ -256,12 +258,20 @@ class Pokemon:
             novo.adicionar_golpe(golpe)
 
         return novo
+    
+    def resetar(self):
+        """Restaura a vida atual e remove todos os status do Pokémon."""
+
+        self.__vida_atual = self.__vida_max
+        self.__status.clear()
 
     def __str__(self):
         return f"{self.__nome} | Tipo: {self.__tipo} | Vida Máxima: {self.__vida_max} | Vida atual {self.__vida_atual}"
 
     def __eq__(self,other):
-        return self.__nome == other.nome
+        if isinstance(other, Pokemon):
+            return self.__nome == other.nome
+        return False
     
     def __lt__ (self,other):
         return self.__velocidade < other.velocidade
@@ -487,6 +497,12 @@ class Treinador():
                     golpe = random.choice(pokemon.golpes)
                     return AcaoAtq(golpe)
                 
+    def resetar_pokemons(self):
+        """Restaura todos os Pokémons do treinador antes de uma nova batalha."""
+
+        for pokemon in self.__pokemons:
+            pokemon.resetar()
+                
     def __str__(self):
         return f"Treinador: {self.__nome} | Pokémons: {[pokemon.nome for pokemon in self.__pokemons]}"
 
@@ -524,6 +540,9 @@ class Batalha():
         aplicando efeitos de status, executando ações e verificando 
         desmaiados até que um dos treinadores não tenha mais Pokémons 
         disponíveis."""
+
+        self.__treinador1.resetar_pokemons()
+        self.__treinador2.resetar_pokemons()
 
         self.registrar(f"Batalha: {self.__treinador1.nome} vs {self.__treinador2.nome}")
         pokemon1 = self.__treinador1.escolher_pokemon()
@@ -585,7 +604,7 @@ class Batalha():
 
             if isinstance(acao1, AcaoAtq):
                 if random.random() <= acao1.golpe.acuracia: 
-                    dano = acao1.executar(segundo, primeiro)
+                    dano = acao1.executar(primeiro, segundo)
 
                     if dano > 0:
                         segundo.receber_dano(dano)
@@ -620,7 +639,7 @@ class Batalha():
 
             if isinstance(acao2, AcaoAtq):
                 if random.random() <= acao2.golpe.acuracia: 
-                    dano = acao2.executar(primeiro, segundo)
+                    dano = acao2.executar(segundo, primeiro)
                     
                     if dano > 0:
                         primeiro.receber_dano(dano)
