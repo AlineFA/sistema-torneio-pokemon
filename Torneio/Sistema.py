@@ -558,11 +558,10 @@ class Batalha():
                 else:
                     pokemon2 = self.__treinador2.escolher_pokemon()
                     primeiro = pokemon2
-
-                if primeiro is None:
+            
+                if not self.__treinador1.tem_pokemon_disponivel() or not self.__treinador2.tem_pokemon_disponivel():
                     break
-                    
-                continue    
+                continue
 
             segundo.aplicar_status()
             if segundo.esta_desmaiado():
@@ -575,10 +574,9 @@ class Batalha():
                     pokemon2 = self.__treinador2.escolher_pokemon()
                     segundo = pokemon2
 
-                if segundo is None:
+                if not self.__treinador1.tem_pokemon_disponivel() or not self.__treinador2.tem_pokemon_disponivel():
                     break
-                    
-                continue    
+                continue
 
             if primeiro == pokemon1:
                 treinador_primeiro = self.__treinador1
@@ -612,9 +610,9 @@ class Batalha():
                             pokemon2 = self.__treinador2.escolher_pokemon()
                             segundo = pokemon2
                         
-                        if segundo is None:
+                        if not self.__treinador1.tem_pokemon_disponivel() or not self.__treinador2.tem_pokemon_disponivel():
                             break
-                        continue    
+                        continue 
                 else:
                     self.registrar(f"{primeiro.nome} errou o golpe!")
             
@@ -647,10 +645,9 @@ class Batalha():
                         else:
                             pokemon2 = self.__treinador2.escolher_pokemon()
                             primeiro = pokemon2
-
-                        if primeiro is None:
+                            
+                        if not self.__treinador1.tem_pokemon_disponivel() or not self.__treinador2.tem_pokemon_disponivel():
                             break
-                       
                         continue
                 else:
                     self.registrar(f"{segundo.nome} errou o golpe!")

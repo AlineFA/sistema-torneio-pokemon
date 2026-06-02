@@ -1,1 +1,30 @@
-Treinador 'Noland, Blaine' não cadastrado - ignorado
+Tipo 'Normal' já cadastrado — ignorado.
+Tipo 'Ghost' já cadastrado — ignorado.
+Golpe 'Problematic': efeito 'Paralize' não implementado.
+260 é maior que o limite de 250 - valor redefinido para 250
+Golpe 'Problematic': acurácia > 1 — reduzida para 1.
+Golpe 'Earthquake' já cadastrado — ignorado.
+260 é maior que o limite de 250 - valor redefinido para 250
+Tipo 'Tree' não existe — ignorado.
+Golpe 'ShadowClaw' já cadastrado — ignorado.
+Golpe 'ParalizeRay': efeito 'Paralize' não implementado.
+Tipo 'Cut' não existe — ignorado.
+Golpe 'SureHit': acurácia > 1 — reduzida para 1.
+Golpe 'SolarBeam' já cadastrado — ignorado.
+Tipo 'Punch' não existe — ignorado.
+Golpe 'HammerArm' já cadastrado — ignorado.
+Eelektross já existe - ignorado
+Garbodor já existe - ignorado
+Zekrom já existe - ignorado
+Chandelure já existe - ignorado
+Delphox já existe - ignorado
+hp maior que o limite de 255 - redefinida para 255
+ataque ultrapassou o limite de 255 - valor redefinido para 255
+defesa ultrapassou o limite de 255 - valor redefinido para 255
+velocidade ultrapassou o limite de 255 - valor redefinido para 255
+Greninja já existe - ignorado
+Item 'HyperPotion' não implementado - ignorado
+Item 'HyperPotion' não implementado - ignorado
+Item 'HyperPotion' não implementado - ignorado
+Treinador 'Brock' não cadastrado - ignorado
+Treinador 'Diamond' duplicado no torneio - ignorado
