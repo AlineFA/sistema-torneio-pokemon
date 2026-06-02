@@ -1,11 +1,15 @@
 class ErroNomeMuitoLongo(Exception):
-    """Classe que administra o sistema caso seja inserido nome 
-    com mais caracteres do que os limites estabelecidos"""
+    """
+    Classe que administra o sistema caso seja inserido nome 
+    com mais caracteres do que os limites estabelecidos
+    """
     pass
 
 class ErroPokemonExcedido(Exception):
-    """Classe que administra erro caso sejam inseridos mais pokémons
-    do que o permitido pelo sistema"""
+    """
+    Classe que administra erro caso sejam inseridos mais pokémons
+    do que o permitido pelo sistema
+    """
     pass
 
 
@@ -29,7 +33,6 @@ class ErroElementoDuplicado(Exception):
 class ErroEntradaInvalida(Exception):
     """
     Erro para entradas inválidas fornecidas ao sistema.
-
     Exemplos:
     string em campo numérico
     tipo inexistente
