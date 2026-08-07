@@ -2,6 +2,8 @@
 
 # Sistema de Torneio Pokémon
 
+> Projeto desenvolvido para a disciplina de Programação Orientada a Dados (POD) na PUCRS.
+
 Sistema desenvolvido em Python para simular batalhas e torneios Pokémon a partir de arquivos de entrada. O sistema realiza leitura dos dados, executa as batalhas e gera arquivos de saída contendo o histórico e resultado do torneio e possíveis erros que ocorreram.
 
 ## Como usar
